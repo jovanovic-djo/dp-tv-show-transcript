@@ -1,6 +1,3 @@
-import csv
-import os
-import re
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -8,51 +5,30 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+
+import os
 import time
 import pandas as pd
 
+
 def scrape_youtube_playlist(url, season):
-    """
-    Scrape YouTube playlist videos
-    
-    Args:
-        url: YouTube playlist URL
-        season: Season number from input CSV
-        
-    Returns:
-        List of dictionaries containing video information
-    """
     # Set up Chrome options
     chrome_options = Options()
     chrome_options.add_argument("--mute-audio")
-    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
-    chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
     
-    # Uncomment for headless mode if needed
-    # chrome_options.add_argument("--headless")
     
     # Initialize the driver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     
     try:
-        # Set window size to a larger size to see more videos
+        # Set window size
         driver.set_window_size(1920, 1080)
         
-        # Navigate to the YouTube playlist
-        driver.get(url)
-        
-        # Wait for the page to load
+        # Navigate to the playlist
+        driver.get(url) 
         time.sleep(5)
-        
-        # Accept cookies if the dialog appears
-        try:
-            cookie_button = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(@aria-label, 'Accept') or contains(text(), 'Accept')]"))
-            )
-            cookie_button.click()
-            time.sleep(1)
-        except:
-            print("No cookie consent needed or already accepted.")
         
         # Wait for the playlist container to load
         try:
@@ -81,44 +57,13 @@ def scrape_youtube_playlist(url, season):
         
         # Enhanced scrolling strategy - KEEPING ORIGINAL LOGIC
         videos_loaded = 0
-        last_videos_loaded = 0
         max_scroll_attempts = 60  # Increased for larger playlists
         no_change_count = 0  # Count consecutive attempts with no new videos
         
         for i in range(max_scroll_attempts):
-            # Method 1: Scroll to bottom of page first to ensure playlist is in view
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(1)
-            
-            # Method 2: Focus on the playlist container
-            driver.execute_script("arguments[0].scrollIntoView();", playlist_container)
-            time.sleep(1)
-            
-            # Method 3: Aggressive scrolling within the playlist container
-            driver.execute_script("""
-                var playlistContent = document.querySelector('ytd-playlist-video-list-renderer #contents');
-                if (playlistContent) {
-                    // Scroll in larger steps
-                    playlistContent.scrollTop += 5000;
-                    // Also try setting to maximum
-                    setTimeout(function() { 
-                        playlistContent.scrollTop = playlistContent.scrollHeight;
-                    }, 500);
-                }
-            """)
-            
-            # Wait longer for videos to load
+    
             time.sleep(3)
-            
-            # Method 4: Try clicking "Show more" button if it exists
-            try:
-                show_more_button = driver.find_element(By.CSS_SELECTOR, "button.yt-spec-button-shape-next.yt-spec-button-shape-next--text")
-                if "show more" in show_more_button.text.lower():
-                    show_more_button.click()
-                    print(f"Season {season} - Clicked 'Show more' button")
-                    time.sleep(3)
-            except:
-                pass
             
             # Count currently loaded videos
             current_videos = driver.find_elements(By.CSS_SELECTOR, "ytd-playlist-video-renderer")
@@ -129,18 +74,15 @@ def scrape_youtube_playlist(url, season):
             # Check if we've loaded new videos
             if current_count > videos_loaded:
                 videos_loaded = current_count
-                no_change_count = 0  # Reset the counter
+                no_change_count = 0
             else:
                 no_change_count += 1
             
-            # Break conditions:
-            # 1. We've loaded all expected videos
-            # 2. No new videos for several consecutive attempts
+            
             if current_count >= estimated_video_count or no_change_count >= 5:
                 print(f"Season {season} - No more videos being loaded for {no_change_count} attempts, stopping scroll.")
                 break
                 
-            # Every 10 attempts, try refreshing the page to overcome any loading issues
             if i > 0 and i % 10 == 0 and current_count < estimated_video_count:
                 print(f"Season {season} - Refreshing page to try to load more videos")
                 driver.refresh()
@@ -177,37 +119,18 @@ def scrape_youtube_playlist(url, season):
                 try:
                     length_element = element.find_element(By.CSS_SELECTOR, "div.badge-shape-wiz__text")
                     length = length_element.text.strip()
-                    print(f"Found length via badge-shape-wiz__text: '{length}' for video {index+1}")
                 except:
-                    # Second attempt: Try the thumbnail overlay time status
-                    try:
-                        length_element = element.find_element(By.CSS_SELECTOR, "span.style-scope.ytd-thumbnail-overlay-time-status-renderer")
-                        length = length_element.text.strip()
-                        print(f"Found length via thumbnail overlay: '{length}' for video {index+1}")
-                    except:
-                        # Third attempt: Try different variation of time status renderer
-                        try:
-                            length_element = element.find_element(By.CSS_SELECTOR, "ytd-thumbnail-overlay-time-status-renderer span")
-                            length = length_element.text.strip()
-                            print(f"Found length via alternative selector: '{length}' for video {index+1}")
-                        except:
-                            # Fourth attempt: Try general time display
-                            try:
-                                length_element = element.find_element(By.XPATH, ".//span[contains(@class, 'time')]")
-                                length = length_element.text.strip()
-                                print(f"Found length via xpath: '{length}' for video {index+1}")
-                            except:
-                                print(f"Could not find length for video {index+1}: {title}")
+                    print(f"Could not find length for video {index+1}: {title}")
                 
                 # Add to the list if we have both title and link
                 if title and link:
                     videos.append({
                         "season": season,
                         "title": title,
-                        "episode_number": "",  # To be filled later
-                        "episode_name": "",    # To be filled later
-                        "date": "",            # To be filled later
-                        "length": length,      # Extracted video length
+                        "episode_number": "",
+                        "episode_name": "",
+                        "date": "",
+                        "length": length,
                         "url": link
                     })
             except Exception as e:
@@ -221,13 +144,6 @@ def scrape_youtube_playlist(url, season):
         driver.quit()
 
 def process_csv(input_file, output_file):
-    """
-    Process the input CSV file containing playlist URLs and seasons
-    
-    Args:
-        input_file: Path to input CSV file
-        output_file: Path to output CSV file
-    """
     # Ensure directories exist
     os.makedirs(os.path.dirname(input_file), exist_ok=True)
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -276,15 +192,10 @@ def process_csv(input_file, output_file):
     print(f"\nSuccessfully saved {len(result_df)} videos to {output_file}")
     print(f"Data was saved with these columns: {', '.join(result_df.columns)}")
     
-    # Print some statistics about the length column
-    length_stats = result_df['length'].value_counts().head(10)
-    print(f"\nTop 10 length values:\n{length_stats}")
-    print(f"Number of videos with length: {result_df['length'].notna().sum()}")
-    print(f"Number of videos without length: {result_df['length'].isna().sum()}")
 
 def main():
-    input_file = "..\\data\\scraper_data\\test_input.csv"
-    output_file = "..\\data\\scraper_data\\test_output.csv"
+    input_file = "..\\data\\scraper_data\\playlist_input.csv"
+    output_file = "..\\data\\scraper_data\\playlist_output.csv"
     
     # Make sure paths use the correct directory separator for the OS
     input_file = os.path.normpath(input_file)
@@ -293,7 +204,6 @@ def main():
     print(f"Input file: {input_file}")
     print(f"Output file: {output_file}")
     
-    # Process the CSV file
     process_csv(input_file, output_file)
 
 if __name__ == "__main__":
