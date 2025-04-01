@@ -1,3 +1,12 @@
+# Whole directories
+downloaded_audio/
+
+
+# Single files
+notes.txt
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
