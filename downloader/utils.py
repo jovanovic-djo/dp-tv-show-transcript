@@ -1,84 +1,108 @@
 import os
 import subprocess
-import time
-from pytube import YouTube
 import logging
 
-# Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-def download_episode_audio(youtube_url, output_dir, max_retries=3):
-    """
-    Download a YouTube video as MP3 audio.
-    
-    Args:
-        youtube_url (str): URL of the YouTube video
-        output_dir (str): Directory to save the MP3 file
-        max_retries (int): Maximum number of retry attempts
-        
-    Returns:
-        str: Path to the downloaded MP3 file or None if download failed
-    """
+def download_episode(youtube_url, output_dir):
+
     os.makedirs(output_dir, exist_ok=True)
+
+    video_id = youtube_url.split("v=")[-1].split("&")[0]
+    safe_filename = f"video_{video_id}"
+    output_template = os.path.join(output_dir, f"{safe_filename}.%(ext)s")
     
-    # Second approach: Try with youtube-dl or yt-dlp (if installed)
+    logger.info(f"Downloading audio from {youtube_url}")
+    
+    process = subprocess.run(
+        ['yt-dlp', 
+            '-f', 'bestaudio',
+            '--no-playlist',
+            '--progress',
+            '-o', output_template,
+            youtube_url],
+        capture_output=True,
+        text=True, 
+        check=False 
+    )
+    
+    logger.info(f"yt-dlp stdout: {process.stdout}")
+    if process.stderr:
+        logger.warning(f"yt-dlp stderr: {process.stderr}")
+        
+    if process.returncode != 0:
+        logger.error(f"yt-dlp failed with exit code {process.returncode}")
+        return None
+        
+    downloaded_files = [f for f in os.listdir(output_dir) if f.startswith(f"video_{video_id}")]
+    if not downloaded_files:
+        logger.error("Download succeeded but file not found")
+        return None
+            
+    downloaded_file = os.path.join(output_dir, downloaded_files[0])
+    logger.info(f"Successfully downloaded file: {downloaded_file}")
+    return downloaded_file
+                
+
+def convert_to_mp3(input_file, output_dir=None):
     try:
-        # Try to extract a valid filename from the URL
-        video_id = youtube_url.split("v=")[-1].split("&")[0]
-        safe_filename = f"video_{video_id}"
-        mp3_file = os.path.join(output_dir, f"{safe_filename}.mp3")
+        if not os.path.exists(input_file):
+            logger.error(f"Input file does not exist: {input_file}")
+            return None
+            
+        if input_file.lower().endswith('.mp3'):
+            logger.info(f"File is already in MP3 format: {input_file}")
+            return input_file
+            
+        if output_dir is None:
+            output_dir = os.path.dirname(input_file)
+            
+        os.makedirs(output_dir, exist_ok=True)
         
-        logger.info(f"Trying youtube-dl/yt-dlp approach for {youtube_url}")
+        base_name = os.path.basename(input_file)
+        file_name_without_ext = os.path.splitext(base_name)[0]
+        mp3_file = os.path.join(output_dir, f"{file_name_without_ext}.mp3")
         
-        # Try yt-dlp first (newer fork with better support)
-        try:
-            subprocess.run(
-                ['yt-dlp', '-x', '--audio-format', 'mp3', 
-                 '--audio-quality', '0', '-o', f"{output_dir}/{safe_filename}.%(ext)s", 
-                 youtube_url],
-                check=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE
-            )
-            logger.info(f"Successfully downloaded with yt-dlp: {mp3_file}")
+        logger.info(f"Converting {input_file} to MP3")
+        
+        process = subprocess.run(
+            ['ffmpeg', '-i', input_file, '-codec:a', 'libmp3lame', '-qscale:a', '1', '-y', mp3_file],
+            capture_output=True,
+            text=True,
+            check=False
+        )
+        
+        if process.returncode != 0:
+            logger.error(f"FFmpeg conversion failed: {process.stderr}")
+            return None
+            
+        if os.path.exists(mp3_file):
+            logger.info(f"Successfully converted to MP3: {mp3_file}")
+            
+            os.remove(input_file)
+            
             return mp3_file
-        except FileNotFoundError:
-            logger.info("yt-dlp not found, trying youtube-dl...")
-        except subprocess.CalledProcessError as e:
-            logger.error(f"yt-dlp download failed: {e}")
-        
-        # Fall back to youtube-dl
-        try:
-            subprocess.run(
-                ['youtube-dl', '-x', '--audio-format', 'mp3', 
-                 '--audio-quality', '0', '-o', f"{output_dir}/{safe_filename}.%(ext)s", 
-                 youtube_url],
-                check=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE
-            )
-            logger.info(f"Successfully downloaded with youtube-dl: {mp3_file}")
-            return mp3_file
-        except FileNotFoundError:
-            logger.warning("youtube-dl not found. Please install yt-dlp or youtube-dl.")
-        except subprocess.CalledProcessError as e:
-            logger.error(f"youtube-dl download failed: {e}")
-        
+        else:
+            logger.error("Conversion seemed to succeed but MP3 file was not found")
+            return None
+            
     except Exception as e:
-        logger.error(f"All download approaches failed for {youtube_url}: {str(e)}")
-    
-    logger.error(f"Failed to download audio from {youtube_url} after multiple attempts")
-    return None
+        logger.error(f"Error converting to MP3: {str(e)}")
+        return None
 
 
-# Remove the test code from the module level
 if __name__ == "__main__":
-    # This only runs when the file is executed directly, not when imported
     test_link = "https://www.youtube.com/watch?v=McwPB-eQ2BY"
     output_dir = "downloaded_audio"
-    audio = download_episode_audio(test_link, output_dir)
-    if audio:
-        print(f"Test successful: {audio}")
+    
+    downloaded_file = download_episode(test_link, output_dir)
+    if downloaded_file:
+        audio = convert_to_mp3(downloaded_file, output_dir)
     else:
-        print("Test failed!")
+        audio = None
+    
+    if audio:
+        logger.info(f"Process successful: {audio}")
+    else:
+        logger.error("Process failed")
