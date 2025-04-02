@@ -2,6 +2,16 @@ import os
 import subprocess
 import pandas as pd
 
+def update_download_status(path, index, status_column = 'downloaded', value = True):
+    df = pd.read_csv(path)
+
+    df.loc[index, status_column] = value
+
+    df.to_csv(path, index = False)
+
+    return True
+
+
 def get_episode_to_download(path):
     df = pd.read_csv(path)
 
