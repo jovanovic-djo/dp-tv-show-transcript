@@ -3,7 +3,6 @@ import subprocess
 import pandas as pd
 import logging
 
-# Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -62,16 +61,17 @@ def download_episode(youtube_url, output_dir, episode_info=None):
         logger.info(f"Output will be saved as: {safe_filename}.*")
         
         process = subprocess.run(
-            ['yt-dlp', 
-             '-f', 'bestaudio',  # Best audio format
-             '--no-playlist',    # Don't download playlists
-             '--progress',       # Show progress
-             '-o', 
-             output_template,  # Output filename template
-             youtube_url],       # URL to download
-            capture_output=True, # Capture stdout and stderr
-            text=True,           # Return strings rather than bytes
-            check=False          # Don't raise exception on non-zero exit
+            [
+                'yt-dlp', 
+                '-f', 'bestaudio',
+                '--no-playlist',
+                '--progress',
+                '-o', 
+                output_template,
+                youtube_url],
+            capture_output=True,
+            text=True,
+            check=False
         )
         
         if process.returncode != 0:

@@ -1,4 +1,4 @@
-season,episode_number,episode_name,url,downloaded,converted,transcripted
-1,1,Rakija,https://www.youtube.com/watch?v=McwPB-eQ2BY&list=PLACTVlX7-E7rq5Ghz0ll5sARODdIGljLK&index=1&pp=iAQB,True,False,False
-1,2,Pilići,https://www.youtube.com/watch?v=hI2t9a4ED04&list=PLACTVlX7-E7rq5Ghz0ll5sARODdIGljLK&index=2&pp=iAQB,False,False,False
-1,3,Biti slobodan,https://www.youtube.com/watch?v=0YlkzhkLXPg&list=PLACTVlX7-E7rq5Ghz0ll5sARODdIGljLK&index=3&pp=iAQB,False,False,False
+season,episode_number,episode_name,url,downloaded,transcripted
+1,1,Rakija,https://www.youtube.com/watch?v=McwPB-eQ2BY&list=PLACTVlX7-E7rq5Ghz0ll5sARODdIGljLK&index=1&pp=iAQB,True,False
+1,2,Pilići,https://www.youtube.com/watch?v=hI2t9a4ED04&list=PLACTVlX7-E7rq5Ghz0ll5sARODdIGljLK&index=2&pp=iAQB,False,False
+1,3,Biti slobodan,https://www.youtube.com/watch?v=0YlkzhkLXPg&list=PLACTVlX7-E7rq5Ghz0ll5sARODdIGljLK&index=3&pp=iAQB,False,False
