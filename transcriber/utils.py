@@ -29,7 +29,7 @@ def extract_audio_from_webm(webm_file, output_file=None):
         print(f"Error extracting audio: {e}")
         return None
 
-def load_whisper_model(model_size="base", device="cuda" if torch.cuda.is_available() else "cpu"):
+def load_whisper_model(model_size="large-v3", device="cuda" if torch.cuda.is_available() else "cpu"):
     print(f"Loading Whisper {model_size} model on {device}...")
     model_name = f"openai/whisper-{model_size}"
     
@@ -124,8 +124,8 @@ def process_all_webm_files(directory, output_directory=None, language="sr"):
     return results
 
 if __name__ == "__main__":
-    input_dir = "..\\downloaded_audio\\webm"
-    output_dir = "..\\downloaded_audio\\transcripted"
+    input_dir = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\downloaded_audio\\webm"
+    output_dir = "C:\\Users\\gatz0\Desktop\\Projects\\dp-tv-show-transcript\\downloaded_audio\\transcripted"
     language = "sr"
     
     os.makedirs(output_dir, exist_ok=True)
