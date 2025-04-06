@@ -29,12 +29,22 @@ def extract_audio_from_webm(webm_file, output_file=None):
         print(f"Error extracting audio: {e}")
         return None
 
-def load_whisper_model(model_size="large-v3", device="cuda" if torch.cuda.is_available() else "cpu"):
+def load_whisper_model(model_size="base", device="cuda" if torch.cuda.is_available() else "cpu"):
     print(f"Loading Whisper {model_size} model on {device}...")
     model_name = f"openai/whisper-{model_size}"
     
     processor = WhisperProcessor.from_pretrained(model_name)
-    model = WhisperForConditionalGeneration.from_pretrained(model_name).to(device)
+    
+    try:
+        model = WhisperForConditionalGeneration.from_pretrained(model_name).to(device)
+    except NameError as e:
+        print(f"Encountered error: {e}")
+        print("Trying alternative loading method...")
+        model = WhisperForConditionalGeneration.from_pretrained(
+            model_name,
+            low_cpu_mem_usage=False,
+            torch_dtype=torch.float32
+        ).to(device)
     
     return model, processor, device
 
@@ -46,11 +56,10 @@ def chunk_audio(audio_path, chunk_size_ms=30000):
     for start_ms in range(0, duration_ms, chunk_size_ms):
         end_ms = min(start_ms + chunk_size_ms, duration_ms)
         chunk = audio[start_ms:end_ms]
-        # Convert to numpy array
         samples = np.array(chunk.get_array_of_samples()).astype(np.float32)
         if chunk.channels > 1:
             samples = samples.reshape((-1, chunk.channels)).mean(axis=1)
-        samples = samples / 32768.0  # Normalize to [-1, 1]
+        samples = samples / 32768.0
         chunks.append(samples)
     
     return chunks
@@ -115,7 +124,7 @@ def process_all_webm_files(directory, output_directory=None, language="sr"):
     return results
 
 if __name__ == "__main__":
-    input_dir = "..\\downloaded_audio"
+    input_dir = "..\\downloaded_audio\\webm"
     output_dir = "..\\downloaded_audio\\transcripted"
     language = "sr"
     
@@ -124,10 +133,15 @@ if __name__ == "__main__":
     print(f"Processing .webm files from: {input_dir}")
     print(f"Saving transcriptions to: {output_dir}")
     
-    results = process_all_webm_files(input_dir, output_dir, language)
-    
-    print(f"\nProcessed {len(results)} files successfully.")
-    if results:
-        print("\nFiles processed:")
-        for file in results:
-            print(f"- {file}")
+    try:
+        results = process_all_webm_files(input_dir, output_dir, language)
+        
+        print(f"\nProcessed {len(results)} files successfully.")
+        if results:
+            print("\nFiles processed:")
+            for file in results:
+                print(f"- {file}")
+    except Exception as e:
+        print(f"Error during processing: {str(e)}")
+        import traceback
+        traceback.print_exc()

@@ -112,7 +112,7 @@ def process_episode(csv_path, output_dir):
 
 if __name__ == "__main__":
     csv_path = "downloader\\test_dataset.csv"
-    output_dir = "downloaded_audio"
+    output_dir = "downloaded_audio\\webm"
     
     downloaded_file = process_episode(csv_path, output_dir)
     
