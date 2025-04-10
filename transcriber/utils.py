@@ -4,7 +4,6 @@ import torch
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from pydub import AudioSegment
 import numpy as np
-import re
 
 def extract_audio_from_webm(webm_file, output_file=None):
     if output_file is None:
@@ -32,7 +31,6 @@ def extract_audio_from_webm(webm_file, output_file=None):
         return None
 
 def load_whisper_model(model_size="large-v3", device="cuda" if torch.cuda.is_available() else "cpu"):
-    """Load Whisper model with better error handling and logging."""
     print(f"Loading Whisper {model_size} model on {device}...")
     model_name = f"openai/whisper-{model_size}"
     
@@ -125,26 +123,6 @@ def cyrillic_to_latin(text):
     
     return result
 
-def post_process_transcription(text):
-    fixes = [
-        (r'\bjel\b', 'je l\''),
-        (r'\bjel\'', 'je l\''),
-        (r'\bnecu\b', 'neću'),
-        (r'\bcu\b', 'ću'),
-        (r'\bsta\b', 'šta'),
-        (r'(\d),(\d)', r'\1.\2'),
-        (r'\s+', ' '),
-        (r'\.{2,}', '...'),
-    ]
-    
-    for pattern, replacement in fixes:
-        text = re.sub(pattern, replacement, text)
-    
-    text = re.sub(r'\s+([.,;:!?])', r'\1', text)
-    
-    text = re.sub(r'(^|[.!?]\s+)([a-zšđčćž])', lambda m: m.group(1) + m.group(2).upper(), text)
-    
-    return text
 
 def transcribe_audio_file(audio_path, model, processor, device, language="sr", use_latin=True):
     print(f"Transcribing {audio_path}...")
@@ -160,9 +138,7 @@ def transcribe_audio_file(audio_path, model, processor, device, language="sr", u
             full_transcription += " " + chunk_transcription
         else:
             full_transcription += chunk_transcription
-    
-    full_transcription = post_process_transcription(full_transcription)
-    
+        
     if use_latin:
         full_transcription = cyrillic_to_latin(full_transcription)
     
@@ -217,7 +193,7 @@ def process_audio_file(audio_path, output_directory=None, language="sr", use_lat
 
 if __name__ == "__main__":
     input_dir = "..\\dp-tv-show-transcript\\downloaded_audio\\webm"
-    output_dir = "..\\dp-tv-show-transcript\\downloaded_audio\\transcripted"
+    output_dir = "..\\dp-tv-show-transcript\\transcriber\\transcripted"
     language = "sr"
     use_latin = True
     
