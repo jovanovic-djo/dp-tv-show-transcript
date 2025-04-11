@@ -5,6 +5,7 @@ downloaded_audio/
 # Single files
 notes.txt
 test_dataset.csv
+test_transcriber.py
 
 
 # Byte-compiled / optimized / DLL files
