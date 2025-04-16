@@ -103,6 +103,7 @@ def process_episode(csv_path, output_dir):
         logger.error(f"Failed to download episode {episode['season']}x{episode['episode_number']}")
         return None
         
+    # For further episode progress marking
     update_result = update_episode_status(csv_path, episode['index'], 'downloaded', True)
     if not update_result:
         logger.warning(f"Failed to update CSV status for episode {episode['season']}x{episode['episode_number']}")
@@ -111,8 +112,8 @@ def process_episode(csv_path, output_dir):
 
 
 if __name__ == "__main__":
-    csv_path = "downloader\\test_dataset.csv"
-    output_dir = "downloaded_audio\\webm"
+    csv_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\samples_dataset.csv"
+    output_dir = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio"
     
     downloaded_file = process_episode(csv_path, output_dir)
     
