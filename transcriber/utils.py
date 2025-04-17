@@ -1,13 +1,23 @@
 import whisper
+import torch
 
-def transcribe(file):
+torch.cuda.is_available()
+
+def transcribe(input, output_path):
     model = whisper.load_model("large-v3")
-    result = model.transcribe(file, fp16=False)
-    output = file.split(".")
+    result = model.transcribe(input, fp16=False)
+    
+    file_name = input.rpartition('\\')[2].split(".")[0]
+    print(file_name)
 
-    text_file = open(output, "w")
+    file_name += ".txt"
+    output_path += file_name
+    print(output_path)
+
+    text_file = open(output_path, "w")
     text_file.write(result["text"])
     text_file.close()
 
-file = "..\\data\\samples\\audio\\s1ep1-Rakija.webm"
-transcribe(file)
+input = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.webm"
+output_path = "..\\data\\samples\\whisper_large-v3\\"
+transcribe(input, output_path)

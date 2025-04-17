@@ -7,6 +7,7 @@ notes.txt
 test_dataset.csv
 test_transcriber.py
 test_downloader.py
+test_script.py
 
 
 # Byte-compiled / optimized / DLL files
