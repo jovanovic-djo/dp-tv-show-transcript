@@ -1,10 +1,13 @@
 # Whole directories
 downloaded_audio/
-
+audio/
 
 # Single files
 notes.txt
 test_dataset.csv
+test_transcriber.py
+test_downloader.py
+test_script.py
 
 
 # Byte-compiled / optimized / DLL files
