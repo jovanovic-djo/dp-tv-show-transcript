@@ -1,5 +1,7 @@
 import whisper
 import torch
+import os
+
 
 torch.cuda.is_available()
 
@@ -18,6 +20,17 @@ def transcribe(input, output_path):
     text_file.write(result["text"])
     text_file.close()
 
-input = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.webm"
+
+
+input_path = "..\\dp-tv-show-transcript\\data\\samples\\audio\\"
 output_path = "..\\data\\samples\\whisper_large-v3\\"
-transcribe(input, output_path)
+    
+for file in os.listdir(input_path):
+    filename = os.fsdecode(file)
+    if filename.endswith(".wav"): 
+        print(filename)
+        continue
+    else:
+        continue
+
+# transcribe(input_path, output_path)
