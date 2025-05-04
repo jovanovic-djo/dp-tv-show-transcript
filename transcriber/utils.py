@@ -3,13 +3,15 @@ import torch
 import os
 
 
-torch.cuda.is_available()
 
-def transcribe_whisper(input, output_path, model):
-    model = whisper.load_model(model)
-    result = model.transcribe(input, language="sr", fp16=False, verbose=True, patience=2, beam_size=5)
+
+
+def transcribe_whisper(input_path, output_path, input_model):
+    model = whisper.load_model(input_model)
+    audio = whisper.load_audio(input_path)
+    result = model.transcribe(audio, language="sr", fp16=True, verbose=True, patience=2, beam_size=5)
     
-    file_name = input.rpartition('\\')[2].split(".")[0]
+    file_name = input_path.rpartition('\\')[2].split(".")[0]
     print(file_name)
 
     file_name += ".txt"
@@ -25,7 +27,6 @@ def transcribe_whisper(input, output_path, model):
 whisper_model = "large-v3"
 input_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\"
 output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\whisper_large-v3\\"
-single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
     
 # for file in os.listdir(input_path):
 #     filename = os.fsdecode(file)
@@ -35,4 +36,21 @@ single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\
 #     else:
 #         continue
 
-k = transcribe_whisper(single_file, output_path, whisper_model)
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
+
+single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
+
+torch.cuda.empty_cache()
+
+import gc
+gc.collect()
+torch.cuda.memory_summary(device=None, abbreviated=False)
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model = whisper.load_model('large').to(device)
+
+result = model.transcribe(single_file, )
+print(result["text"])
+
+
+#k = transcribe_whisper(single_file, output_path, whisper_model)
