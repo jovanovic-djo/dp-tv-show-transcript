@@ -36,7 +36,7 @@ output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\
 #     else:
 #         continue
 
-os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:300"
 
 single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
 
@@ -44,7 +44,7 @@ torch.cuda.empty_cache()
 
 import gc
 gc.collect()
-torch.cuda.memory_summary(device=None, abbreviated=False)
+
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = whisper.load_model('large').to(device)
