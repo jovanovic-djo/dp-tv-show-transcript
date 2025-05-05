@@ -16,12 +16,12 @@ def transcribe_whisper(input_path, output_path, input_model):
 
     file_name += ".txt"
     output_path += file_name
-    print(output_path)
 
+    text_file = open(output_path, "w")
 
-    print(result)
+    text_file.write(result["text"])
 
-    return result
+    text_file.close()
 
 
 whisper_model = "large-v3"
