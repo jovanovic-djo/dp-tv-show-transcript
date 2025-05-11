@@ -23,55 +23,48 @@ def transcribe_whisper(input_path, output_path, input_model):
 
 
 
-
-def transcribe_speech_recognition(audio_file_path, output_file_path=None):
-    """
-    Transcribes a WAV audio file in Serbian language to text.
+def transcribe_speech_recognition(input_wav_file, output_txt_file=None, use_whisper=True):
+    if not os.path.exists(input_wav_file):
+        raise FileNotFoundError(f"Input file {input_wav_file} not found")
     
-    Args:
-        audio_file_path (str): Path to the WAV audio file
-        output_file_path (str, optional): Path to save the transcription. If None, returns the text.
+    if output_txt_file is None:
+        base_name = os.path.splitext(input_wav_file)[0]
+        output_txt_file = f"{base_name}.txt"
     
-    Returns:
-        str: Transcribed text if output_file_path is None, otherwise None
-    """
-    # Validate the audio file exists
-    if not os.path.exists(audio_file_path):
-        raise FileNotFoundError(f"Audio file not found: {audio_file_path}")
+    transcribed_text = ""
     
-    # Validate it's a WAV file
-    if not audio_file_path.lower().endswith('.wav'):
-        raise ValueError("Only WAV files are supported")
-    
-    # Initialize recognizer
-    recognizer = sr.Recognizer()
-    
-    # Load the audio file
-    with sr.AudioFile(audio_file_path) as source:
-        print(f"Processing audio file: {audio_file_path}")
-        # Record the audio data
-        audio_data = recognizer.record(source)
-    
-    try:
-        # Recognize speech using Google Speech Recognition with Serbian language
-        text = recognizer.recognize_google(audio_data, language="sr-RS")
-        print("Transcription successful")
-        
-        # Save to file if output path is provided
-        if output_file_path:
-            with open(output_file_path, 'w', encoding='utf-8') as text_file:
-                text_file.write(text)
-            print(f"Transcription saved to: {output_file_path}")
-            return None
-        else:
-            return text
+    if use_whisper:
+        try:
+            model = whisper.load_model("base")
             
-    except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand the audio")
-        return "" if not output_file_path else None
-    except sr.RequestError as e:
-        print(f"Could not request results from Google Speech Recognition service; {e}")
-        return "" if not output_file_path else None
+            result = model.transcribe(input_wav_file, language="sr")
+            transcribed_text = result["text"]
+            
+        except Exception as e:
+            print(f"Error using Whisper: {e}")
+            print("Falling back to Google Speech Recognition")
+            use_whisper = False
+    
+    if not use_whisper:
+        recognizer = sr.Recognizer()
+        
+        with sr.AudioFile(input_wav_file) as source:
+            audio_data = recognizer.record(source)
+            
+            try:
+                transcribed_text = recognizer.recognize_google(audio_data, language="sr-RS")
+            except sr.UnknownValueError:
+                print("Google Speech Recognition could not understand the audio")
+                transcribed_text = "ERROR: Could not transcribe audio"
+            except sr.RequestError as e:
+                print(f"Could not request results from Google Speech Recognition service; {e}")
+                transcribed_text = f"ERROR: Speech recognition service error: {e}"
+
+    with open(output_txt_file, "w", encoding="utf-8") as file:
+        file.write(transcribed_text)
+    
+    print(f"Transcription saved to {output_txt_file}")
+    return transcribed_text
 
 
 whisper_model = "large-v3"
@@ -79,5 +72,6 @@ input_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\
 output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\whisper_large-v3\\"
 
 single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
-    
-transcribe_speech_recognition(single_file, output_path)
+
+text = transcribe_speech_recognition(single_file)
+print(text)
