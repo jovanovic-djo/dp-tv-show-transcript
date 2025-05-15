@@ -12,13 +12,20 @@ def transcribe_whisper(input_path, output_dir, model):
     if model == "large" and torch.cuda.is_available():
         device = "cuda"
 
-    
     if device == "cuda" and torch.cuda.is_available():
         print(f"Using GPU: {torch.cuda.get_device_name(0)}")
     else:
         print("Using CPU for processing")
 
-    model = whisper.load_model(model, device=device)
+    for saved_file in os.listdir(output_dir):
+        saved_file_name = os.fsdecode(saved_file)
+        if file_name in saved_file_name: 
+            msg = saved_file_name + " is already saved"
+            print(msg)
+
+            return
+        
+        model = whisper.load_model(model, device=device)
     
     result = model.transcribe(input_path, language="sr")
     transcribed_text = result["text"]
