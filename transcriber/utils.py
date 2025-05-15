@@ -1,4 +1,5 @@
 import whisper
+import torch
 import os
 
 
@@ -7,7 +8,17 @@ def transcribe_whisper(input_path, output_dir, model):
     transcribed_text = ""
     file_name = input_path.rpartition('\\')[2].split(".")[0]
 
-    model = whisper.load_model(model)
+    device = "cpu"
+    if model == "large" and torch.cuda.is_available():
+        device = "cuda"
+
+    
+    if device == "cuda" and torch.cuda.is_available():
+        print(f"Using GPU: {torch.cuda.get_device_name(0)}")
+    else:
+        print("Using CPU for processing")
+
+    model = whisper.load_model(model, device=device)
     
     result = model.transcribe(input_path, language="sr")
     transcribed_text = result["text"]
@@ -15,7 +26,6 @@ def transcribe_whisper(input_path, output_dir, model):
     with open(output_dir + file_name, "w", encoding="utf-8") as file:
         file.write(transcribed_text)
     
-    print(f"Transcription saved to {output_dir}")
     print(transcribed_text)
 
     return transcribed_text
