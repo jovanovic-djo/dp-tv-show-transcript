@@ -8,15 +8,6 @@ def transcribe_whisper(input_path, output_dir, model, saved_files):
     transcribed_text = ""
     file_name = input_path.rpartition('\\')[2].split(".")[0]
 
-    device = "cpu"
-    if model == "large" and torch.cuda.is_available():
-        device = "cuda"
-
-    if device == "cuda" and torch.cuda.is_available():
-        print(f"Using GPU: {torch.cuda.get_device_name(0)}")
-    else:
-        print("Using CPU for processing")
-
     if file_name in saved_files: 
         msg = file_name + " is skipped because it is already saved"
         print(msg)
@@ -44,11 +35,19 @@ saved_file_names = ""
 for saved_file in os.listdir(output_path):
     saved_file_names += os.fsdecode(saved_file)
 
-print(saved_file_names)
+
+device = "cpu"
+if model == "large" and torch.cuda.is_available():
+    device = "cuda"
+
+if device == "cuda" and torch.cuda.is_available():
+    print(f"Using GPU: {torch.cuda.get_device_name(0)}")
+else:
+    print("Using CPU for processing")
+
 
 for file in os.listdir(input_path):
     filename = os.fsdecode(file)
     if filename.endswith(".wav"):
-        print(filename)
         name = os.path.join(input_path, filename)
         transcribe_whisper(name, output_path, model, saved_file_names)
