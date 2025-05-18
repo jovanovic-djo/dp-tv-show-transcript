@@ -3,7 +3,7 @@ import torch
 import os
 
 
-def transcribe_whisper(input_path, output_dir, model):
+def transcribe_whisper(input_path, output_dir, model, saved_files):
 
     transcribed_text = ""
     file_name = input_path.rpartition('\\')[2].split(".")[0]
@@ -17,23 +17,14 @@ def transcribe_whisper(input_path, output_dir, model):
     else:
         print("Using CPU for processing")
 
-    for saved_file in os.listdir(output_dir):
-        saved_file_name = os.fsdecode(saved_file)
-
-        print("file_name: " + file_name)
-        print("saved_file: " + saved_file)
-        print("saved_file_name: " + saved_file_name)
-
-        if file_name in saved_file_name: 
-            msg = saved_file_name + " is skipped because it is already saved"
-            print(msg)
-            return
-        else:
-            model = whisper.load_model(model, device=device)
-            result = model.transcribe(input_path, language="sr")
-            transcribed_text = result["text"]
-            break
-
+    if file_name in saved_files: 
+        msg = file_name + " is skipped because it is already saved"
+        print(msg)
+        return
+    else:
+        model = whisper.load_model(model, device=device)
+        result = model.transcribe(input_path, language="sr")
+        transcribed_text = result["text"]
     
     with open(output_dir + file_name, "w", encoding="utf-8") as file:
         file.write(transcribed_text)
@@ -49,9 +40,15 @@ output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\
 single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
 
 
+saved_file_names = ""
+for saved_file in os.listdir(output_path):
+    saved_file_names += os.fsdecode(saved_file)
+
+print(saved_file_names)
+
 for file in os.listdir(input_path):
     filename = os.fsdecode(file)
-    if filename.endswith(".wav"): 
+    if filename.endswith(".wav"):
         print(filename)
         name = os.path.join(input_path, filename)
-        transcribe_whisper(name, output_path, model)
+        transcribe_whisper(name, output_path, model, saved_file_names)
