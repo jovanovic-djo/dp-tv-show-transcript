@@ -25,7 +25,7 @@ def transcribe_whisper(input_path, output_dir, model):
         print("saved_file_name: " + saved_file_name)
 
         if file_name in saved_file_name: 
-            msg = saved_file_name + " is already saved"
+            msg = saved_file_name + " is skipped because it is already saved"
             print(msg)
             return
         else:
@@ -42,9 +42,9 @@ def transcribe_whisper(input_path, output_dir, model):
 
     return transcribed_text
 
-model = "large"
+model = "base"
 input_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\"
-output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\whisper_large\\"
+output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\whisper_base\\"
 
 single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
 
