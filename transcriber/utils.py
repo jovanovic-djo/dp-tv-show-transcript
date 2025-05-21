@@ -17,7 +17,7 @@ def transcribe_whisper(input_path, output_dir, model, saved_files):
         result = model.transcribe(input_path, language="sr")
         transcribed_text = result["text"]
     
-    with open(output_dir + file_name, "w", encoding="utf-8") as file:
+    with open(output_dir + file_name + ".txt", "w", encoding="utf-8") as file:
         file.write(transcribed_text)
     
     print(transcribed_text)
