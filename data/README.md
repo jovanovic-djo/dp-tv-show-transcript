@@ -1,2 +1,2 @@
-#### Number of episodes scraped: 2205
-#### Seasons scraped: 12
+#### Number of episodes scraped: 2529
+#### Seasons scraped: 14
