@@ -18,10 +18,22 @@
 
 ## Methodology
 ### So far, one of the working steps would be the following:
-- Scrape titles and links of each episode from YouTube. (Scrapy)
+- Scrape titles and links of each episode from YouTube. (yt-dlp, see "Scraping the Data" below)
 - Download each episode using manually or using automation. (Selenium)
 - Upload episode/Provide a link to the 3rd party tool which would generate a transcript of the episode, manually or with automation. (Selenium)
 - Store episodes and extract valuable data from them into the main dataset.
+
+## Scraping the Data
+### The scraper collects episode metadata from the official YouTube channel, no browser needed.
+```
+pip install -r requirements.txt
+python scraper/script.py
+```
+- Reads season playlists from `data/scraper_data/playlist_input.csv` (add a row there for each new season).
+- Writes raw playlist data to `data/scraper_data/playlist_output.csv`.
+- Writes parsed data to `data/clean_data/episodes.csv` and `data/clean_data/bonus_content.csv`.
+- Also checks the channel for episodes that were uploaded but left out of the season playlists (skip with `--no-channel`).
+- Run `python scraper/script.py --help` for all options. If YouTube changes break scraping, update yt-dlp first: `pip install -U yt-dlp`.
 
 ### _About future contributions_: Guidelines and detailed documentation will be uploaded in the near future.
 

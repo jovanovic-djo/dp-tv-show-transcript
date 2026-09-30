@@ -1,179 +1,182 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
+import argparse
+import re
+import unicodedata
+from pathlib import Path
 
-import os
-import time
 import pandas as pd
+import yt_dlp
+
+
+ROOT = Path(__file__).resolve().parents[1]
+INPUT_FILE = ROOT / "data" / "scraper_data" / "playlist_input.csv"
+OUTPUT_FILE = ROOT / "data" / "scraper_data" / "playlist_output.csv"
+CLEAN_DIR = ROOT / "data" / "clean_data"
+CHANNEL_URL = "https://www.youtube.com/@DrzavniPosaoSerija/videos"
+
+SHOW_PREFIX = "DRŽAVNI POSAO"
+EPISODE_KEY = "Ep."
+COLUMNS = ["season", "title", "episode_number", "episode_name", "date", "length", "url"]
+
+EPISODE_RE = re.compile(r"Ep\.\s*(\d+)\s*:\s*")
+DATE_RE = re.compile(r"\(\s*(\d{2}\.\d{2}\.\d{4}\.)\s*\)")
+
+
+def fetch_entries(url):
+    ydl_options = {
+        "extract_flat": "in_playlist",
+        "quiet": True,
+        "no_warnings": True,
+    }
+
+    with yt_dlp.YoutubeDL(ydl_options) as ydl:
+        info = ydl.extract_info(url, download=False)
+
+    return [entry for entry in info.get("entries", []) if entry and entry.get("id")]
+
+
+def format_length(seconds):
+    if seconds is None:
+        return ""
+
+    hours, rest = divmod(int(seconds), 3600)
+    minutes, seconds = divmod(rest, 60)
+    if hours:
+        return f"{hours}:{minutes:02d}:{seconds:02d}"
+    return f"{minutes}:{seconds:02d}"
+
+
+def clean_title(title):
+    return " ".join(unicodedata.normalize("NFC", title).split())
+
+
+def video_url(video_id):
+    return f"https://www.youtube.com/watch?v={video_id}"
 
 
 def scrape_youtube_playlist(url, season):
-    chrome_options = Options()
-    chrome_options.add_argument("--mute-audio")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--no-sandbox")
-    
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-    
-    try:
-        driver.set_window_size(1920, 1080)
-        
-        time.sleep(5)
-        
-        try:
-            playlist_container = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-playlist-video-list-renderer"))
-            )
-        except:
-            print(f"Could not find the playlist container for season {season}")
-            return []
-            
-        try:
-            video_count_element = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "span.style-scope.ytd-playlist-sidebar-primary-info-renderer"))
-            )
-            video_count_text = video_count_element.text
-            if "videos" in video_count_text.lower():
-                estimated_video_count = int(''.join(filter(str.isdigit, video_count_text)))
-                print(f"Season {season} playlist contains approximately {estimated_video_count} videos")
-            else:
-                estimated_video_count = 100
-                print(f"Could not determine exact video count for season {season}, will attempt to load all videos")
-        except:
-            estimated_video_count = 100
-            print(f"Could not determine video count for season {season}, will attempt to load all videos")
+    list_id = re.search(r"list=([^&]+)", url).group(1)
+    videos = []
 
-        videos_loaded = 0
-        max_scroll_attempts = 60
-        no_change_count = 0
-        
-        for i in range(max_scroll_attempts):
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    
-            time.sleep(3)
-            
-            current_videos = driver.find_elements(By.CSS_SELECTOR, "ytd-playlist-video-renderer")
-            current_count = len(current_videos)
-            
-            print(f"Season {season} - Scroll attempt {i+1}/{max_scroll_attempts}: Loaded {current_count} videos so far...")
-            
-            if current_count > videos_loaded:
-                videos_loaded = current_count
-                no_change_count = 0
-            else:
-                no_change_count += 1
-            
-            
-            if current_count >= estimated_video_count or no_change_count >= 5:
-                print(f"Season {season} - No more videos being loaded for {no_change_count} attempts, stopping scroll.")
-                break
-                
-            if i > 0 and i % 10 == 0 and current_count < estimated_video_count:
-                print(f"Season {season} - Refreshing page to try to load more videos")
-                driver.refresh()
-                time.sleep(5)
-                
-                try:
-                    playlist_container = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-playlist-video-list-renderer"))
-                    )
-                except:
-                    print(f"Could not find the playlist container after refresh for season {season}")
-                    break
-        
-        video_elements = driver.find_elements(By.CSS_SELECTOR, "ytd-playlist-video-renderer")
-        print(f"Season {season} - Final video count: {len(video_elements)}")
-        
-        videos = []
-        for index, element in enumerate(video_elements):
-            try:
-                title_element = element.find_element(By.CSS_SELECTOR, "#video-title")
-                title = title_element.text.strip()
-                
-                link = title_element.get_attribute("href")
-                length = ""
-                
-                try:
-                    length_element = element.find_element(By.CSS_SELECTOR, "div.badge-shape-wiz__text")
-                    length = length_element.text.strip()
-                except:
-                    print(f"Could not find length for video {index+1}: {title}")
-                
-                if title and link:
-                    videos.append({
-                        "season": season,
-                        "title": title,
-                        "episode_number": "",
-                        "episode_name": "",
-                        "date": "",
-                        "length": length,
-                        "url": link
-                    })
-            except Exception as e:
-                print(f"Error extracting video info in season {season}, video {index+1}: {e}")
-                continue
-        
-        return videos
-        
-    finally:
-        driver.quit()
+    for index, entry in enumerate(fetch_entries(url), start=1):
+        videos.append({
+            "season": season,
+            "title": clean_title(entry["title"]),
+            "episode_number": "",
+            "episode_name": "",
+            "date": "",
+            "length": format_length(entry.get("duration")),
+            "url": f"{video_url(entry['id'])}&list={list_id}&index={index}",
+        })
 
-def process_csv(input_file, output_file):
-    os.makedirs(os.path.dirname(input_file), exist_ok=True)
-    os.makedirs(os.path.dirname(output_file), exist_ok=True)
-    
-    try:
-        df = pd.read_csv(input_file)
-        print(f"Successfully loaded {len(df)} rows from {input_file}")
-    except Exception as e:
-        print(f"Error reading CSV file: {e}")
-        return
-    
+    print(f"Season {season}: found {len(videos)} videos")
+    return videos
+
+
+def parse_title(title):
+    """Return (episode_number, episode_name, date) parsed from a video title."""
+    dates = list(DATE_RE.finditer(title))
+    date = dates[-1].group(1) if dates else ""
+
+    episode = EPISODE_RE.search(title)
+    if not episode:
+        return "", "", date
+
+    name_end = len(title)
+    for match in dates:
+        if match.start() > episode.end():
+            name_end = match.start()
+            break
+
+    return int(episode.group(1)), title[episode.end():name_end].strip(), date
+
+
+def clean(raw_df):
+    df = raw_df.copy()
+    df["url"] = df["url"].str.split("&").str[0]
+
+    parsed = df["title"].apply(parse_title)
+    df["episode_number"] = parsed.str[0]
+    df["episode_name"] = parsed.str[1]
+    df["date"] = parsed.str[2]
+
+    is_episode = df["title"].str.contains(EPISODE_KEY, regex=False)
+    return df[is_episode].reset_index(drop=True), df[~is_episode].reset_index(drop=True)
+
+
+def add_channel_episodes(episodes_df, channel_url):
+    """Add episodes that are uploaded on the channel but missing from every season playlist."""
+    known_ids = set(episodes_df["url"].str.extract(r"v=([^&]+)")[0])
+    known_numbers = set(episodes_df["episode_number"])
+    rows = episodes_df.to_dict("records")
+
+    added = 0
+    for entry in fetch_entries(channel_url):
+        title = clean_title(entry["title"])
+        if entry["id"] in known_ids or not title.startswith(SHOW_PREFIX) or EPISODE_KEY not in title:
+            continue
+
+        number, name, date = parse_title(title)
+        if number == "" or number in known_numbers:
+            continue
+
+        position = next((i for i, row in enumerate(rows) if row["episode_number"] > number), len(rows))
+        season = rows[position - 1]["season"] if position > 0 else rows[0]["season"]
+        if position < len(rows) and rows[position]["season"] != season:
+            print(f"Ep.{number} falls between seasons {season} and {rows[position]['season']}, assigned to season {season}")
+
+        rows.insert(position, {
+            "season": season,
+            "title": title,
+            "episode_number": number,
+            "episode_name": name,
+            "date": date,
+            "length": format_length(entry.get("duration")),
+            "url": video_url(entry["id"]),
+        })
+        known_numbers.add(number)
+        added += 1
+        print(f"Added Ep.{number}: {name} (not in any playlist)")
+
+    print(f"Channel check: added {added} episodes missing from playlists")
+    return pd.DataFrame(rows, columns=COLUMNS)
+
+
+def read_playlists(input_file):
+    df = pd.read_csv(input_file)
     df.columns = [col.strip() for col in df.columns]
-    if 'url' in df.columns:
-        df['url'] = df['url'].str.strip("'")
-    
-    all_videos = []
-    
-    for _, row in df.iterrows():
-        season = row['season']
-        url = row['url']
-        
-        print(f"\nProcessing Season {season}: {url}")
-        videos = scrape_youtube_playlist(url, season)
-        
-        print(f"Found {len(videos)} videos for Season {season}")
-        all_videos.extend(videos)
-    
-    result_df = pd.DataFrame(all_videos)
-    
-    required_columns = ['season', 'title', 'episode_number', 'episode_name', 'date', 'length', 'url']
-    for col in required_columns:
-        if col not in result_df.columns:
-            result_df[col] = ""
-    
-    result_df = result_df[required_columns]
-    
-    result_df.to_csv(output_file, index=False)
-    print(f"\nSuccessfully saved {len(result_df)} videos to {output_file}")
-    print(f"Data was saved with these columns: {', '.join(result_df.columns)}")
-    
+    df["url"] = df["url"].str.strip().str.strip("'")
+    return df[["season", "url"]]
+
+
+def save_csv(df, path, index=False):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(path, index=index, encoding="utf-8", lineterminator="\n")
+    print(f"Saved {len(df)} rows to {path}")
+
 
 def main():
-    input_file = "..\\data\\scraper_data\\playlist_input.csv"
-    output_file = "..\\data\\scraper_data\\playlist_output.csv"
-    
-    input_file = os.path.normpath(input_file)
-    output_file = os.path.normpath(output_file)
-    
-    print(f"Input file: {input_file}")
-    print(f"Output file: {output_file}")
-    
-    process_csv(input_file, output_file)
+    parser = argparse.ArgumentParser(description="Scrape Državni posao episode metadata from YouTube.")
+    parser.add_argument("--input", type=Path, default=INPUT_FILE, help="CSV with season playlist URLs")
+    parser.add_argument("--output", type=Path, default=OUTPUT_FILE, help="raw scraped playlist data")
+    parser.add_argument("--clean-dir", type=Path, default=CLEAN_DIR, help="where episodes.csv and bonus_content.csv are written")
+    parser.add_argument("--channel", default=CHANNEL_URL, help="channel videos URL used to find episodes missing from playlists")
+    parser.add_argument("--no-channel", action="store_true", help="skip the channel check")
+    args = parser.parse_args()
+
+    all_videos = []
+    for _, row in read_playlists(args.input).iterrows():
+        all_videos.extend(scrape_youtube_playlist(row["url"], row["season"]))
+
+    raw_df = pd.DataFrame(all_videos, columns=COLUMNS)
+    save_csv(raw_df, args.output)
+
+    episodes_df, bonus_df = clean(raw_df)
+    if not args.no_channel:
+        episodes_df = add_channel_episodes(episodes_df, args.channel)
+
+    save_csv(episodes_df, args.clean_dir / "episodes.csv", index=True)
+    save_csv(bonus_df, args.clean_dir / "bonus_content.csv", index=True)
+
 
 if __name__ == "__main__":
     main()
