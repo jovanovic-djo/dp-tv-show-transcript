@@ -20,7 +20,7 @@ def transcribe_whisper(input_path, output_dir, model, saved_files):
         result = model.transcribe(input_path, language="sr")
         transcribed_text = result["text"]
     
-    with open(output_dir + file_name + ".txt", "w", encoding="utf-8") as file:
+    with open(os.path.join(output_dir, file_name + ".txt"), "w", encoding="utf-8") as file:
         file.write(transcribed_text)
     
     print(transcribed_text)
@@ -30,11 +30,12 @@ def transcribe_whisper(input_path, output_dir, model, saved_files):
 def transcribe_wav2vec(device):
     model = Wav2Vec2Model.from_pretrained("facebook/wav2vec2-large-960h-lv60-self", torch_dtype=torch.float16, attn_implementation="flash_attention_2").to(device)
 
-model = "large"
-input_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\"
-output_path = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\whisper_large\\"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-single_file = "C:\\Users\\gatz0\\Desktop\\Projects\\dp-tv-show-transcript\\data\\samples\\audio\\s1ep1-Rakija.wav"
+model = "large"
+input_path = os.path.join(ROOT, "data", "samples", "audio")
+output_path = os.path.join(ROOT, "data", "samples", "whisper_large")
+os.makedirs(output_path, exist_ok=True)
 
 saved_file_names = ""
 for saved_file in os.listdir(output_path):
