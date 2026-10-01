@@ -36,18 +36,18 @@ python scraper/script.py
 - Run `python scraper/script.py --help` for all options. If YouTube changes break scraping, update yt-dlp first: `pip install -U yt-dlp`.
 
 ## Downloading Audio
-### The downloader saves episode audio as `.wav` files, which the transcriber reads.
+### The downloader saves each episode's original YouTube audio (usually Opus in a `.webm` file, about 5 MB per episode) without converting it. Whisper decodes it directly, so converting to MP3 or WAV would only cost time and quality.
 ```
 python downloader/utils.py
 python downloader/utils.py --limit 1
 python downloader/utils.py --csv data/clean_data/episodes.csv --output-dir audio
 ```
-- Requires [FFmpeg](https://ffmpeg.org/download.html) on your PATH for the conversion to `.wav`.
+- Requires [FFmpeg](https://ffmpeg.org/download.html) on your PATH, which Whisper uses to decode the audio.
 - Reads episodes from `data/samples/samples_dataset.csv` by default, and saves audio to `data/samples/audio/`.
 - The `downloaded` column in the CSV tracks progress: an episode is marked `True` right after its audio is saved, and episodes already marked `True` are skipped on the next run. If the column is missing, it is added.
 - Videos that fail to download (private, removed, region-locked) are skipped and stay `False`, so the next run retries them.
 - `--limit N` downloads at most N episodes, which is useful for a quick test.
-- Each `.wav` is roughly 10 times larger than the original audio (about 65 MB for a 6-minute episode), so delete files once they are transcribed.
+- The transcriber accepts `.webm`, `.m4a`, `.opus`, `.mp3` and `.wav` files.
 
 ### Troubleshooting
 - `The page needs to be reloaded` or other YouTube errors usually mean yt-dlp is outdated: `pip install -U yt-dlp`.

@@ -12,12 +12,9 @@ OUTPUT_DIR = ROOT / "data" / "samples" / "audio"
 
 
 def download_episode(url, file_name, output_dir):
+    # Keep YouTube's original audio stream (usually Opus in .webm), Whisper decodes it directly
     ydl_options = {
         'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'wav',
-        }],
         'outtmpl': str(Path(output_dir) / f'{file_name}.%(ext)s'),
     }
 

@@ -4,10 +4,12 @@ import os
 from transformers import Wav2Vec2Model
 
 
+AUDIO_EXTENSIONS = (".webm", ".m4a", ".opus", ".mp3", ".wav")
+
 def transcribe_whisper(input_path, output_dir, model, saved_files):
 
     transcribed_text = ""
-    file_name = input_path.rpartition('\\')[2].split(".")[0]
+    file_name = os.path.splitext(os.path.basename(input_path))[0]
 
     if file_name in saved_files: 
         msg = file_name + " is skipped because it is already saved"
@@ -50,6 +52,6 @@ else:
 
 for file in os.listdir(input_path):
     filename = os.fsdecode(file)
-    if filename.endswith(".wav"):
+    if filename.lower().endswith(AUDIO_EXTENSIONS):
         name = os.path.join(input_path, filename)
         transcribe_whisper(name, output_path, model, saved_file_names)
