@@ -1,6 +1,7 @@
 import argparse
 import datetime
 import importlib.util
+import json
 import random
 import re
 from pathlib import Path
@@ -18,7 +19,7 @@ SAMPLES_CSV = SAMPLES_DIR / "samples_dataset.csv"
 RESULTS_DIR = ROOT / "evaluation" / "results"
 
 NON_MODEL_DIRS = {"audio", "correct_samples", "ground_truth"}
-TRANSCRIPT_EXTENSIONS = (".vtt", ".txt")
+TRANSCRIPT_EXTENSIONS = (".vtt", ".txt", ".json")
 LOOP_THRESHOLD = 5
 # Text Whisper is known to invent over music and silence
 SUSPICIOUS_PHRASES = ["hvala što pratite", "hvala na gledanju", "pretplatite se", "muzika muzika"]
@@ -49,7 +50,11 @@ def parse_vtt(text):
 
 def read_transcript(path):
     text = path.read_text(encoding="utf-8")
-    return parse_vtt(text) if path.suffix == ".vtt" else text
+    if path.suffix == ".vtt":
+        return parse_vtt(text)
+    if path.suffix == ".json":
+        return json.loads(text)["text"]
+    return text
 
 
 def load_transcripts(directory):

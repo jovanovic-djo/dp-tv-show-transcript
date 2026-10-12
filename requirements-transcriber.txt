@@ -1,0 +1,5 @@
+-r requirements.txt
+faster-whisper==1.2.1
+av>=11,<16
+nvidia-cublas-cu12; platform_system != "Darwin"
+nvidia-cudnn-cu12==9.*; platform_system != "Darwin"

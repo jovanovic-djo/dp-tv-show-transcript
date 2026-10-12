@@ -53,6 +53,20 @@ python downloader/utils.py --csv data/clean_data/episodes.csv --output-dir audio
 - `The page needs to be reloaded` or other YouTube errors usually mean yt-dlp is outdated: `pip install -U yt-dlp`.
 - yt-dlp may warn that no JavaScript runtime was found. Downloads still work for now, but installing [Deno](https://deno.com/) (`winget install DenoLand.Deno` on Windows) keeps them working when YouTube requires it.
 
+## Transcribing
+### `transcriber/utils.py` transcribes audio with [faster-whisper](https://github.com/SYSTRAN/faster-whisper) (Whisper large-v3 by default) and saves one JSON file per episode.
+```
+pip install -r requirements-transcriber.txt
+python transcriber/utils.py
+python transcriber/utils.py --model large-v3-turbo --input data/samples/audio/s1ep1-Rakija.wav
+```
+- Runs on an NVIDIA GPU when available (int8, about 3.5 GB VRAM for large-v3), otherwise on the CPU. The CUDA 12 libraries are installed by `requirements-transcriber.txt`.
+- Reads audio from `data/samples/audio/` and saves to `data/samples/fw_<model>/`, so `evaluation/evaluate.py` picks the results up. Files that already have a transcript are skipped.
+- Settings chosen against Whisper's loops and invented text: voice activity detection (skips music and silence), no conditioning on previous text, beam search, a Latin-script prompt and the main characters' names as hotwords.
+- After transcription, Cyrillic is converted to Latin and segments that are most likely invented are removed: the leaked prompt, only "Muzika"/🎵, phrases like "Hvala što pratite kanal", and the same text repeated more than twice. Removed segments are kept in `removed_segments` in the JSON.
+- Each JSON has the full `text`, `segments` with start/end times and word timestamps, the model and settings used, and processing time.
+- Keeps Windows awake while running (closing a laptop lid still sleeps). On laptops, make sure the GPU is not power-limited by the manufacturer's power mode, `nvidia-smi -q -d POWER` shows the current limit.
+
 ## Evaluating Transcription Quality
 ### `evaluation/evaluate.py` scores model transcripts against hand-corrected references, so different models and settings can be compared with numbers.
 ```
