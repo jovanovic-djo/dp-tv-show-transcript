@@ -8,6 +8,7 @@ season,title,episode_number,episode_name,date,length,url,downloaded,reference_ch
 3,DRŽAVNI POSAO [HQ] - Ep.402: Velinko 1 (08.09.2014.),402,Velinko 1,08.09.2014.,10:20,https://www.youtube.com/watch?v=K1ZqPEmk2Ho,True,False
 3,DRŽAVNI POSAO [HQ] - Ep.403: Velinko 2 (09.09.2014.),403,Velinko 2,09.09.2014.,10:39,https://www.youtube.com/watch?v=Wh3E9QigVms,True,False
 3,DRŽAVNI POSAO [HQ] - Ep.404: Seansa (10.09.2014.),404,Seansa,10.09.2014.,10:21,https://www.youtube.com/watch?v=VDWDgGnJrU0,True,False
+3,DRŽAVNI POSAO [HQ] - Ep.427: Tematski restorani (13.10.2014.),427,Tematski restorani,13.10.2014.,10:18,https://www.youtube.com/watch?v=6BgSsx07roQ,False,False
 4,DRŽAVNI POSAO [HQ] - Ep.592: Privatni posao (21.09.2015.),592,Privatni posao,21.09.2015.,4:50,https://www.youtube.com/watch?v=hRQq4iSLAi8,True,False
 4,DRŽAVNI POSAO [HQ] - Ep.593: Rada (22.09.2015.),593,Rada,22.09.2015.,8:15,https://www.youtube.com/watch?v=ui3Y5-mFfzs,True,False
 4,DRŽAVNI POSAO [HQ] - Ep.594: Izlazak (23.09.2015.),594,Izlazak,23.09.2015.,11:40,https://www.youtube.com/watch?v=mnON362XUmc,True,False
@@ -35,3 +36,11 @@ season,title,episode_number,episode_name,date,length,url,downloaded,reference_ch
 12,DRŽAVNI POSAO [HQ] - Ep.2031: Znao sam (18.09.2023.),2031,Znao sam,18.09.2023.,9:32,https://www.youtube.com/watch?v=V3Ewvh21P2c,True,False
 12,DRŽAVNI POSAO [HQ] - Ep.2032: Rotacija na gore (19.09.2023.),2032,Rotacija na gore,19.09.2023.,11:19,https://www.youtube.com/watch?v=BRkqxsjUzb0,True,False
 12,DRŽAVNI POSAO [HQ] - Ep.2033: Od podruma do gore (20.09.2023.),2033,Od podruma do gore,20.09.2023.,9:53,https://www.youtube.com/watch?v=u-6eCU1f7V4,True,False
+13,DRŽAVNI POSAO [HQ] - Ep.2220: Priče sa odmora (23.09.2024.),2220,Priče sa odmora,23.09.2024.,10:42,https://www.youtube.com/watch?v=NLrI4plEi90,False,False
+13,DRŽAVNI POSAO [HQ] - Ep.2221: Postizanje sopstva (24.09.2024.),2221,Postizanje sopstva,24.09.2024.,7:17,https://www.youtube.com/watch?v=jKQHO9s1HTg,False,False
+13,DRŽAVNI POSAO [HQ] - Ep.2222: Sve je suprotno (25.09.2024.),2222,Sve je suprotno,25.09.2024.,10:37,https://www.youtube.com/watch?v=uf_GQjKcOjA,False,False
+13,DRŽAVNI POSAO [HQ] - Ep.2239: Najgora jela (18.10.2024.),2239,Najgora jela,18.10.2024.,7:02,https://www.youtube.com/watch?v=q3hBFkc5MZM,False,False
+13,DRŽAVNI POSAO [HQ] - Ep.2263: Pakao Vijetnama (22.11.2024.),2263,Pakao Vijetnama,22.11.2024.,9:21,https://www.youtube.com/watch?v=2z94KqpExTU,False,False
+14,DRŽAVNI POSAO [HQ] - Ep.2404: U poznatom okruženju (15.09.2025.),2404,U poznatom okruženju,15.09.2025.,8:53,https://www.youtube.com/watch?v=mFIhnL7Pl-o,False,False
+14,DRŽAVNI POSAO [HQ] - Ep.2405: Ojed (16.09.2025.),2405,Ojed,16.09.2025.,6:45,https://www.youtube.com/watch?v=Zlv3r6egUNc,False,False
+14,DRŽAVNI POSAO [HQ] - Ep.2406: Mentalna higijena (17.09.2025.),2406,Mentalna higijena,17.09.2025.,11:31,https://www.youtube.com/watch?v=62AWD0I7nfM,False,False
