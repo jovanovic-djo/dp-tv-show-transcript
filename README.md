@@ -53,6 +53,26 @@ python downloader/utils.py --csv data/clean_data/episodes.csv --output-dir audio
 - `The page needs to be reloaded` or other YouTube errors usually mean yt-dlp is outdated: `pip install -U yt-dlp`.
 - yt-dlp may warn that no JavaScript runtime was found. Downloads still work for now, but installing [Deno](https://deno.com/) (`winget install DenoLand.Deno` on Windows) keeps them working when YouTube requires it.
 
+## Evaluating Transcription Quality
+### `evaluation/evaluate.py` scores model transcripts against hand-corrected references, so different models and settings can be compared with numbers.
+```
+python evaluation/evaluate.py
+python evaluation/evaluate.py --models whisper_small whisper_large --per-file
+python evaluation/evaluate.py --show s1ep1-Rakija
+```
+- References are read from `data/samples/correct_samples/` (`.txt` or `.vtt`), model outputs from the other folders in `data/samples/` (one folder per model, same file names).
+- Only references marked `reference_checked = True` in `data/samples/samples_dataset.csv` are scored. Mark a file only after correcting it fully by ear. `--all-references` scores unchecked ones too, but those results are unreliable.
+- References that look uncorrected are listed as warnings: identical to a model's output, containing text Whisper is known to invent (e.g. "Hvala što pratite kanal", repeated "Muzika", 🎵), or repeating the same phrase many times.
+- Both texts are normalized the same way before scoring: Cyrillic converted to Latin, lowercase, punctuation, emoji and `[tags]` removed. Dialect spellings and numbers are kept as written.
+- Metrics, lower is better unless noted:
+  - **WER**: word error rate, the main metric, with a 95% confidence interval from bootstrapping over files.
+  - **WER no-diacritics**: the same with č/ć/š/ž/đ simplified, the gap to WER shows how many errors are only diacritics.
+  - **CER**: character error rate, kinder to small mistakes in word endings.
+  - **sub / del / ins**: wrong, missing and extra words. High `ins` usually means invented text, high `del` means skipped sections.
+  - **len**: model words divided by reference words, should be close to 1.
+- Reference-free checks run on every model file: files where a 4-word phrase repeats 5+ times (Whisper looping) and files with known invented text.
+- `--per-file` adds WER per file and per season, `--save` writes the results table to `evaluation/results/`.
+
 ### _About future contributions_: Guidelines and detailed documentation will be uploaded in the near future.
 
 ## About the TV Show
