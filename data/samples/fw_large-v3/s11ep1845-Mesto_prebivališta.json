@@ -1,0 +1,2818 @@
+{
+ "episode": "s11ep1845-Mesto_prebivališta",
+ "source_file": "s11ep1845-Mesto_prebivališta.wav",
+ "text": "Ja sam Karanović, Marko, baka, moj. Napustila nas je prošla reda. Kada smo mi došli baku da pokopamo, razumete, mi smo zapravo shvatili da je ta parcela, znate, ona je već cijela rezervisana. 12.50, mi smo radili to 12.50, tako da ćemo mi nastaviti sutra da tražimo. Moj, tata će jako da se naljeti, verujte mi, to nije čovjek. Pa nešto tata, malo trpimo. Znači imate 24 sata da vratite to grobno mjesto moje majke, meni, to jest i njima. Dio predmet Karanović Bogtubija. I ja sam samo prebaćao sa Karanović na rašta i... Razvijenite, molce, ja sad drugo da kažem. Moj svemućni otac će me izvući ili vas ili samo mene, sve mi je sad potpuno jedno. Zove ga Bogtubija šta čekamo, kog se nisi setio ranije. Daj mi ime, lica. Sad ću poslati više krona da malo popričam sa njim. Karanović. Samo molim te, nemoj reći da ime Rajku. Beži što dalje, na kraj sveta i dalje. Dobar dan, kolega. Dobro jutro. Kako ste? Odlično, a vi? Koliko je sati? Čvarkov Dragan Torbica Ostalo je vama samo da pečatirate, ja sam sve prošao. Dobro. Ako možete, ovde. Evo, čekaj, je li ovo zavedeno? Kako da ne? Jesi juče zavedeno kod mene u knjigi. Odlično. Eta, hvala veliko. Predmet rešen, vodim vas u zrmanju na sladaled. Tođo, ako samo moćni! Šta je to? Dobro, znači promena pre bivalište. Ima i prezime. Ja sam Đurđe Čvarkovljević. Kako? Đurđe Čvarkovljević. Đurđe, Đur. Ima i prezime. Ja, aha. Da, vi. Ratko Dražićić. Dražićić. Ratko Dražićić, da. Sigurno? Da Ime i... Dragan i ove Torbice, a inače sa rodom iz jednog malog sela pored... Dobro, znači obavili smo i opštinu, sad smo ovde prijavljeni Da, ja sam onaj razumeći što smo morali to da radimo Kako, što smo morali da radimo? Pa što? Moraš prijavljati mjesto prebivališta, budalo, jedna blesava, kad dođeš, neđe Pa šta, šta recimo, pojezda u vojsko da nam stigneš, šta bi onda... A pitaj tatu tvog, što smo morali da... On da si ovako savjetovao, tvoj pametni tata, za sve mu hvala Uglavnom, ja sam se ovde prijavio kao Đurđe Čvarkovljević. Šta? Znači, zvaćete me od sad Đurđe Čvarkovljević. Dobro, Đurđe. Ja sam, šta mi je rekao... Ratković, ne, Raković. Pa imena svoga, ne znaš po šta je. Ja sam ušao čekao, rekao, ja sam Dragan i ovo je to. Nema, nema, nema! Đuho, Đuho!",
+ "duration": 373.48,
+ "processing_seconds": 86.2,
+ "transcribed_at": "2026-10-12T20:02:58",
+ "engine": "faster-whisper",
+ "model": "large-v3",
+ "device": "cuda",
+ "compute_type": "int8_float16",
+ "settings": {
+  "language": "sr",
+  "beam_size": 5,
+  "vad_filter": true,
+  "condition_on_previous_text": false,
+  "word_timestamps": true,
+  "initial_prompt": "Razgovor na srpskom jeziku, latinicom.",
+  "hotwords": "Đorđe Čvarkov Dragan Torbica Boškić"
+ },
+ "segments": [
+  {
+   "start": 14.03,
+   "end": 28.75,
+   "text": "Ja sam Karanović, Marko, baka, moj. Napustila nas je prošla reda. Kada smo mi došli baku da pokopamo, razumete, mi smo zapravo shvatili da je ta parcela, znate, ona je već cijela rezervisana.",
+   "words": [
+    {
+     "start": 14.03,
+     "end": 14.39,
+     "word": "Ja",
+     "probability": 0.133
+    },
+    {
+     "start": 14.39,
+     "end": 14.51,
+     "word": "sam",
+     "probability": 0.968
+    },
+    {
+     "start": 14.51,
+     "end": 15.05,
+     "word": "Karanović,",
+     "probability": 0.922
+    },
+    {
+     "start": 15.13,
+     "end": 15.87,
+     "word": "Marko,",
+     "probability": 0.922
+    },
+    {
+     "start": 15.87,
+     "end": 16.69,
+     "word": "baka,",
+     "probability": 0.795
+    },
+    {
+     "start": 16.69,
+     "end": 17.09,
+     "word": "moj.",
+     "probability": 0.937
+    },
+    {
+     "start": 18.07,
+     "end": 18.51,
+     "word": "Napustila",
+     "probability": 0.837
+    },
+    {
+     "start": 18.51,
+     "end": 18.69,
+     "word": "nas",
+     "probability": 0.99
+    },
+    {
+     "start": 18.69,
+     "end": 18.83,
+     "word": "je",
+     "probability": 0.847
+    },
+    {
+     "start": 18.83,
+     "end": 19.13,
+     "word": "prošla",
+     "probability": 0.498
+    },
+    {
+     "start": 19.13,
+     "end": 19.35,
+     "word": "reda.",
+     "probability": 0.528
+    },
+    {
+     "start": 20.43,
+     "end": 20.87,
+     "word": "Kada",
+     "probability": 0.499
+    },
+    {
+     "start": 20.87,
+     "end": 20.97,
+     "word": "smo",
+     "probability": 0.995
+    },
+    {
+     "start": 20.97,
+     "end": 21.15,
+     "word": "mi",
+     "probability": 0.975
+    },
+    {
+     "start": 21.15,
+     "end": 21.53,
+     "word": "došli",
+     "probability": 0.995
+    },
+    {
+     "start": 21.53,
+     "end": 22.11,
+     "word": "baku",
+     "probability": 0.765
+    },
+    {
+     "start": 22.11,
+     "end": 22.19,
+     "word": "da",
+     "probability": 0.958
+    },
+    {
+     "start": 22.19,
+     "end": 22.81,
+     "word": "pokopamo,",
+     "probability": 0.98
+    },
+    {
+     "start": 22.91,
+     "end": 23.29,
+     "word": "razumete,",
+     "probability": 0.904
+    },
+    {
+     "start": 23.71,
+     "end": 23.83,
+     "word": "mi",
+     "probability": 0.738
+    },
+    {
+     "start": 23.83,
+     "end": 24.05,
+     "word": "smo",
+     "probability": 0.999
+    },
+    {
+     "start": 24.05,
+     "end": 24.45,
+     "word": "zapravo",
+     "probability": 0.983
+    },
+    {
+     "start": 24.45,
+     "end": 24.81,
+     "word": "shvatili",
+     "probability": 0.996
+    },
+    {
+     "start": 24.81,
+     "end": 25.01,
+     "word": "da",
+     "probability": 0.984
+    },
+    {
+     "start": 25.01,
+     "end": 25.11,
+     "word": "je",
+     "probability": 0.978
+    },
+    {
+     "start": 25.11,
+     "end": 25.19,
+     "word": "ta",
+     "probability": 0.979
+    },
+    {
+     "start": 25.19,
+     "end": 26.13,
+     "word": "parcela,",
+     "probability": 0.605
+    },
+    {
+     "start": 26.19,
+     "end": 26.57,
+     "word": "znate,",
+     "probability": 0.964
+    },
+    {
+     "start": 26.61,
+     "end": 27.05,
+     "word": "ona",
+     "probability": 0.894
+    },
+    {
+     "start": 27.05,
+     "end": 27.21,
+     "word": "je",
+     "probability": 0.979
+    },
+    {
+     "start": 27.21,
+     "end": 27.29,
+     "word": "već",
+     "probability": 0.996
+    },
+    {
+     "start": 27.29,
+     "end": 27.67,
+     "word": "cijela",
+     "probability": 0.708
+    },
+    {
+     "start": 27.67,
+     "end": 28.75,
+     "word": "rezervisana.",
+     "probability": 0.81
+    }
+   ]
+  },
+  {
+   "start": 28.81,
+   "end": 33.63,
+   "text": "12.50, mi smo radili to 12.50, tako da ćemo mi nastaviti sutra da tražimo.",
+   "words": [
+    {
+     "start": 28.81,
+     "end": 29.01,
+     "word": "12",
+     "probability": 0.887
+    },
+    {
+     "start": 29.01,
+     "end": 29.33,
+     "word": ".50,",
+     "probability": 0.744
+    },
+    {
+     "start": 29.43,
+     "end": 29.55,
+     "word": "mi",
+     "probability": 0.984
+    },
+    {
+     "start": 29.55,
+     "end": 29.63,
+     "word": "smo",
+     "probability": 1.0
+    },
+    {
+     "start": 29.63,
+     "end": 29.97,
+     "word": "radili",
+     "probability": 0.994
+    },
+    {
+     "start": 29.97,
+     "end": 30.11,
+     "word": "to",
+     "probability": 0.96
+    },
+    {
+     "start": 30.11,
+     "end": 30.39,
+     "word": "12",
+     "probability": 0.987
+    },
+    {
+     "start": 30.39,
+     "end": 30.91,
+     "word": ".50,",
+     "probability": 0.998
+    },
+    {
+     "start": 31.07,
+     "end": 31.41,
+     "word": "tako",
+     "probability": 0.992
+    },
+    {
+     "start": 31.41,
+     "end": 31.53,
+     "word": "da",
+     "probability": 0.999
+    },
+    {
+     "start": 31.53,
+     "end": 31.79,
+     "word": "ćemo",
+     "probability": 0.998
+    },
+    {
+     "start": 31.79,
+     "end": 31.91,
+     "word": "mi",
+     "probability": 0.993
+    },
+    {
+     "start": 31.91,
+     "end": 32.47,
+     "word": "nastaviti",
+     "probability": 0.998
+    },
+    {
+     "start": 32.47,
+     "end": 33.01,
+     "word": "sutra",
+     "probability": 0.998
+    },
+    {
+     "start": 33.01,
+     "end": 33.11,
+     "word": "da",
+     "probability": 0.843
+    },
+    {
+     "start": 33.11,
+     "end": 33.63,
+     "word": "tražimo.",
+     "probability": 0.996
+    }
+   ]
+  },
+  {
+   "start": 33.71,
+   "end": 36.55,
+   "text": "Moj, tata će jako da se naljeti, verujte mi, to nije čovjek.",
+   "words": [
+    {
+     "start": 33.71,
+     "end": 34.11,
+     "word": "Moj,",
+     "probability": 0.447
+    },
+    {
+     "start": 34.17,
+     "end": 34.57,
+     "word": "tata",
+     "probability": 0.767
+    },
+    {
+     "start": 34.57,
+     "end": 34.73,
+     "word": "će",
+     "probability": 1.0
+    },
+    {
+     "start": 34.73,
+     "end": 34.93,
+     "word": "jako",
+     "probability": 0.991
+    },
+    {
+     "start": 34.93,
+     "end": 35.09,
+     "word": "da",
+     "probability": 0.998
+    },
+    {
+     "start": 35.09,
+     "end": 35.19,
+     "word": "se",
+     "probability": 0.998
+    },
+    {
+     "start": 35.19,
+     "end": 35.55,
+     "word": "naljeti,",
+     "probability": 0.817
+    },
+    {
+     "start": 35.55,
+     "end": 35.77,
+     "word": "verujte",
+     "probability": 0.867
+    },
+    {
+     "start": 35.77,
+     "end": 35.87,
+     "word": "mi,",
+     "probability": 0.981
+    },
+    {
+     "start": 35.87,
+     "end": 35.97,
+     "word": "to",
+     "probability": 0.999
+    },
+    {
+     "start": 35.97,
+     "end": 36.25,
+     "word": "nije",
+     "probability": 1.0
+    },
+    {
+     "start": 36.25,
+     "end": 36.55,
+     "word": "čovjek.",
+     "probability": 0.927
+    }
+   ]
+  },
+  {
+   "start": 36.55,
+   "end": 37.97,
+   "text": "Pa nešto tata, malo trpimo.",
+   "words": [
+    {
+     "start": 36.55,
+     "end": 36.77,
+     "word": "Pa",
+     "probability": 0.813
+    },
+    {
+     "start": 36.77,
+     "end": 36.89,
+     "word": "nešto",
+     "probability": 0.705
+    },
+    {
+     "start": 36.89,
+     "end": 37.19,
+     "word": "tata,",
+     "probability": 0.808
+    },
+    {
+     "start": 37.19,
+     "end": 37.47,
+     "word": "malo",
+     "probability": 0.943
+    },
+    {
+     "start": 37.47,
+     "end": 37.97,
+     "word": "trpimo.",
+     "probability": 0.69
+    }
+   ]
+  },
+  {
+   "start": 39.33,
+   "end": 45.45,
+   "text": "Znači imate 24 sata da vratite to grobno mjesto moje majke, meni, to jest i njima.",
+   "words": [
+    {
+     "start": 39.33,
+     "end": 39.89,
+     "word": "Znači",
+     "probability": 0.788
+    },
+    {
+     "start": 39.89,
+     "end": 40.25,
+     "word": "imate",
+     "probability": 0.828
+    },
+    {
+     "start": 40.25,
+     "end": 40.45,
+     "word": "24",
+     "probability": 0.96
+    },
+    {
+     "start": 40.45,
+     "end": 41.19,
+     "word": "sata",
+     "probability": 0.964
+    },
+    {
+     "start": 41.19,
+     "end": 41.59,
+     "word": "da",
+     "probability": 0.674
+    },
+    {
+     "start": 41.59,
+     "end": 42.13,
+     "word": "vratite",
+     "probability": 0.995
+    },
+    {
+     "start": 42.13,
+     "end": 42.41,
+     "word": "to",
+     "probability": 0.988
+    },
+    {
+     "start": 42.41,
+     "end": 42.99,
+     "word": "grobno",
+     "probability": 0.989
+    },
+    {
+     "start": 42.99,
+     "end": 43.33,
+     "word": "mjesto",
+     "probability": 0.996
+    },
+    {
+     "start": 43.33,
+     "end": 43.65,
+     "word": "moje",
+     "probability": 0.91
+    },
+    {
+     "start": 43.65,
+     "end": 44.17,
+     "word": "majke,",
+     "probability": 0.972
+    },
+    {
+     "start": 44.19,
+     "end": 44.63,
+     "word": "meni,",
+     "probability": 0.966
+    },
+    {
+     "start": 44.63,
+     "end": 44.75,
+     "word": "to",
+     "probability": 0.762
+    },
+    {
+     "start": 44.75,
+     "end": 44.99,
+     "word": "jest",
+     "probability": 0.792
+    },
+    {
+     "start": 44.99,
+     "end": 45.15,
+     "word": "i",
+     "probability": 0.406
+    },
+    {
+     "start": 45.15,
+     "end": 45.45,
+     "word": "njima.",
+     "probability": 0.931
+    }
+   ]
+  },
+  {
+   "start": 45.85,
+   "end": 47.71,
+   "text": "Dio predmet Karanović Bogtubija.",
+   "words": [
+    {
+     "start": 45.85,
+     "end": 46.41,
+     "word": "Dio",
+     "probability": 0.566
+    },
+    {
+     "start": 46.41,
+     "end": 46.69,
+     "word": "predmet",
+     "probability": 0.983
+    },
+    {
+     "start": 46.69,
+     "end": 47.21,
+     "word": "Karanović",
+     "probability": 0.935
+    },
+    {
+     "start": 47.21,
+     "end": 47.71,
+     "word": "Bogtubija.",
+     "probability": 0.573
+    }
+   ]
+  },
+  {
+   "start": 47.81,
+   "end": 52.83,
+   "text": "I ja sam samo prebaćao sa Karanović na rašta i...",
+   "words": [
+    {
+     "start": 47.81,
+     "end": 48.03,
+     "word": "I",
+     "probability": 0.582
+    },
+    {
+     "start": 48.03,
+     "end": 48.17,
+     "word": "ja",
+     "probability": 0.971
+    },
+    {
+     "start": 48.17,
+     "end": 48.33,
+     "word": "sam",
+     "probability": 0.984
+    },
+    {
+     "start": 48.33,
+     "end": 48.69,
+     "word": "samo",
+     "probability": 0.929
+    },
+    {
+     "start": 48.69,
+     "end": 49.85,
+     "word": "prebaćao",
+     "probability": 0.877
+    },
+    {
+     "start": 49.85,
+     "end": 50.01,
+     "word": "sa",
+     "probability": 0.969
+    },
+    {
+     "start": 50.01,
+     "end": 50.65,
+     "word": "Karanović",
+     "probability": 0.995
+    },
+    {
+     "start": 50.65,
+     "end": 51.85,
+     "word": "na",
+     "probability": 0.627
+    },
+    {
+     "start": 51.85,
+     "end": 52.35,
+     "word": "rašta",
+     "probability": 0.92
+    },
+    {
+     "start": 52.35,
+     "end": 52.83,
+     "word": "i...",
+     "probability": 0.678
+    }
+   ]
+  },
+  {
+   "start": 54.07,
+   "end": 56.07,
+   "text": "Razvijenite, molce, ja sad drugo da kažem.",
+   "words": [
+    {
+     "start": 54.07,
+     "end": 54.63,
+     "word": "Razvijenite,",
+     "probability": 0.611
+    },
+    {
+     "start": 54.65,
+     "end": 54.99,
+     "word": "molce,",
+     "probability": 0.422
+    },
+    {
+     "start": 55.09,
+     "end": 55.27,
+     "word": "ja",
+     "probability": 0.278
+    },
+    {
+     "start": 55.27,
+     "end": 55.47,
+     "word": "sad",
+     "probability": 0.599
+    },
+    {
+     "start": 55.47,
+     "end": 55.69,
+     "word": "drugo",
+     "probability": 0.978
+    },
+    {
+     "start": 55.69,
+     "end": 55.79,
+     "word": "da",
+     "probability": 0.982
+    },
+    {
+     "start": 55.79,
+     "end": 56.07,
+     "word": "kažem.",
+     "probability": 0.945
+    }
+   ]
+  },
+  {
+   "start": 56.21,
+   "end": 61.45,
+   "text": "Moj svemućni otac će me izvući ili vas ili samo mene, sve mi je sad potpuno jedno.",
+   "words": [
+    {
+     "start": 56.21,
+     "end": 56.33,
+     "word": "Moj",
+     "probability": 0.893
+    },
+    {
+     "start": 56.33,
+     "end": 57.11,
+     "word": "svemućni",
+     "probability": 0.935
+    },
+    {
+     "start": 57.11,
+     "end": 57.61,
+     "word": "otac",
+     "probability": 0.981
+    },
+    {
+     "start": 57.61,
+     "end": 58.13,
+     "word": "će",
+     "probability": 0.978
+    },
+    {
+     "start": 58.13,
+     "end": 58.21,
+     "word": "me",
+     "probability": 0.928
+    },
+    {
+     "start": 58.21,
+     "end": 58.61,
+     "word": "izvući",
+     "probability": 0.975
+    },
+    {
+     "start": 58.61,
+     "end": 58.83,
+     "word": "ili",
+     "probability": 0.913
+    },
+    {
+     "start": 58.83,
+     "end": 59.01,
+     "word": "vas",
+     "probability": 0.926
+    },
+    {
+     "start": 59.01,
+     "end": 59.61,
+     "word": "ili",
+     "probability": 0.808
+    },
+    {
+     "start": 59.61,
+     "end": 59.83,
+     "word": "samo",
+     "probability": 0.97
+    },
+    {
+     "start": 59.83,
+     "end": 60.17,
+     "word": "mene,",
+     "probability": 0.996
+    },
+    {
+     "start": 60.17,
+     "end": 60.33,
+     "word": "sve",
+     "probability": 0.991
+    },
+    {
+     "start": 60.33,
+     "end": 60.45,
+     "word": "mi",
+     "probability": 0.971
+    },
+    {
+     "start": 60.45,
+     "end": 60.53,
+     "word": "je",
+     "probability": 0.977
+    },
+    {
+     "start": 60.53,
+     "end": 60.65,
+     "word": "sad",
+     "probability": 0.878
+    },
+    {
+     "start": 60.65,
+     "end": 61.13,
+     "word": "potpuno",
+     "probability": 0.989
+    },
+    {
+     "start": 61.13,
+     "end": 61.45,
+     "word": "jedno.",
+     "probability": 0.854
+    }
+   ]
+  },
+  {
+   "start": 61.49,
+   "end": 64.25,
+   "text": "Zove ga Bogtubija šta čekamo, kog se nisi setio ranije.",
+   "words": [
+    {
+     "start": 61.49,
+     "end": 61.69,
+     "word": "Zove",
+     "probability": 0.823
+    },
+    {
+     "start": 61.69,
+     "end": 61.81,
+     "word": "ga",
+     "probability": 0.974
+    },
+    {
+     "start": 61.81,
+     "end": 62.25,
+     "word": "Bogtubija",
+     "probability": 0.96
+    },
+    {
+     "start": 62.25,
+     "end": 62.45,
+     "word": "šta",
+     "probability": 0.807
+    },
+    {
+     "start": 62.45,
+     "end": 62.95,
+     "word": "čekamo,",
+     "probability": 0.987
+    },
+    {
+     "start": 62.97,
+     "end": 63.15,
+     "word": "kog",
+     "probability": 0.486
+    },
+    {
+     "start": 63.15,
+     "end": 63.21,
+     "word": "se",
+     "probability": 0.939
+    },
+    {
+     "start": 63.21,
+     "end": 63.39,
+     "word": "nisi",
+     "probability": 0.987
+    },
+    {
+     "start": 63.39,
+     "end": 63.89,
+     "word": "setio",
+     "probability": 0.959
+    },
+    {
+     "start": 63.89,
+     "end": 64.25,
+     "word": "ranije.",
+     "probability": 0.994
+    }
+   ]
+  },
+  {
+   "start": 64.25,
+   "end": 68.59,
+   "text": "Daj mi ime, lica. Sad ću poslati više krona da malo popričam sa njim.",
+   "words": [
+    {
+     "start": 64.25,
+     "end": 64.71,
+     "word": "Daj",
+     "probability": 0.616
+    },
+    {
+     "start": 64.71,
+     "end": 64.79,
+     "word": "mi",
+     "probability": 0.949
+    },
+    {
+     "start": 64.79,
+     "end": 65.01,
+     "word": "ime,",
+     "probability": 0.998
+    },
+    {
+     "start": 65.03,
+     "end": 65.45,
+     "word": "lica.",
+     "probability": 0.976
+    },
+    {
+     "start": 65.99,
+     "end": 66.51,
+     "word": "Sad",
+     "probability": 0.937
+    },
+    {
+     "start": 66.51,
+     "end": 66.71,
+     "word": "ću",
+     "probability": 0.993
+    },
+    {
+     "start": 66.71,
+     "end": 67.11,
+     "word": "poslati",
+     "probability": 0.941
+    },
+    {
+     "start": 67.11,
+     "end": 67.39,
+     "word": "više",
+     "probability": 0.575
+    },
+    {
+     "start": 67.39,
+     "end": 67.67,
+     "word": "krona",
+     "probability": 0.606
+    },
+    {
+     "start": 67.67,
+     "end": 67.77,
+     "word": "da",
+     "probability": 0.932
+    },
+    {
+     "start": 67.77,
+     "end": 67.95,
+     "word": "malo",
+     "probability": 0.992
+    },
+    {
+     "start": 67.95,
+     "end": 68.37,
+     "word": "popričam",
+     "probability": 0.874
+    },
+    {
+     "start": 68.37,
+     "end": 68.53,
+     "word": "sa",
+     "probability": 0.637
+    },
+    {
+     "start": 68.53,
+     "end": 68.59,
+     "word": "njim.",
+     "probability": 0.892
+    }
+   ]
+  },
+  {
+   "start": 70.61,
+   "end": 71.13,
+   "text": "Karanović.",
+   "words": [
+    {
+     "start": 70.61,
+     "end": 71.13,
+     "word": "Karanović.",
+     "probability": 0.948
+    }
+   ]
+  },
+  {
+   "start": 72.55,
+   "end": 80.01,
+   "text": "Samo molim te, nemoj reći da ime Rajku. Beži što dalje, na kraj sveta i dalje.",
+   "words": [
+    {
+     "start": 72.55,
+     "end": 73.07,
+     "word": "Samo",
+     "probability": 0.996
+    },
+    {
+     "start": 73.07,
+     "end": 73.35,
+     "word": "molim",
+     "probability": 0.984
+    },
+    {
+     "start": 73.35,
+     "end": 73.53,
+     "word": "te,",
+     "probability": 0.997
+    },
+    {
+     "start": 73.63,
+     "end": 74.91,
+     "word": "nemoj",
+     "probability": 0.966
+    },
+    {
+     "start": 74.91,
+     "end": 75.11,
+     "word": "reći",
+     "probability": 0.996
+    },
+    {
+     "start": 75.11,
+     "end": 75.19,
+     "word": "da",
+     "probability": 0.897
+    },
+    {
+     "start": 75.19,
+     "end": 75.33,
+     "word": "ime",
+     "probability": 0.84
+    },
+    {
+     "start": 75.33,
+     "end": 75.73,
+     "word": "Rajku.",
+     "probability": 0.873
+    },
+    {
+     "start": 76.57,
+     "end": 77.09,
+     "word": "Beži",
+     "probability": 0.994
+    },
+    {
+     "start": 77.09,
+     "end": 77.29,
+     "word": "što",
+     "probability": 0.966
+    },
+    {
+     "start": 77.29,
+     "end": 77.65,
+     "word": "dalje,",
+     "probability": 0.999
+    },
+    {
+     "start": 77.69,
+     "end": 78.27,
+     "word": "na",
+     "probability": 0.999
+    },
+    {
+     "start": 78.27,
+     "end": 78.51,
+     "word": "kraj",
+     "probability": 0.997
+    },
+    {
+     "start": 78.51,
+     "end": 78.95,
+     "word": "sveta",
+     "probability": 0.999
+    },
+    {
+     "start": 78.95,
+     "end": 79.63,
+     "word": "i",
+     "probability": 0.698
+    },
+    {
+     "start": 79.63,
+     "end": 80.01,
+     "word": "dalje.",
+     "probability": 1.0
+    }
+   ]
+  },
+  {
+   "start": 108.04,
+   "end": 109.28,
+   "text": "Dobar dan, kolega.",
+   "words": [
+    {
+     "start": 108.04,
+     "end": 108.56,
+     "word": "Dobar",
+     "probability": 0.979
+    },
+    {
+     "start": 108.56,
+     "end": 108.72,
+     "word": "dan,",
+     "probability": 1.0
+    },
+    {
+     "start": 108.74,
+     "end": 109.28,
+     "word": "kolega.",
+     "probability": 0.999
+    }
+   ]
+  },
+  {
+   "start": 109.56,
+   "end": 110.22,
+   "text": "Dobro jutro.",
+   "words": [
+    {
+     "start": 109.56,
+     "end": 109.98,
+     "word": "Dobro",
+     "probability": 0.575
+    },
+    {
+     "start": 109.98,
+     "end": 110.22,
+     "word": "jutro.",
+     "probability": 0.9
+    }
+   ]
+  },
+  {
+   "start": 112.54,
+   "end": 113.2,
+   "text": "Kako ste?",
+   "words": [
+    {
+     "start": 112.54,
+     "end": 113.06,
+     "word": "Kako",
+     "probability": 0.988
+    },
+    {
+     "start": 113.06,
+     "end": 113.2,
+     "word": "ste?",
+     "probability": 1.0
+    }
+   ]
+  },
+  {
+   "start": 113.66,
+   "end": 114.28,
+   "text": "Odlično, a vi?",
+   "words": [
+    {
+     "start": 113.66,
+     "end": 114.18,
+     "word": "Odlično,",
+     "probability": 0.996
+    },
+    {
+     "start": 114.18,
+     "end": 114.24,
+     "word": "a",
+     "probability": 0.241
+    },
+    {
+     "start": 114.24,
+     "end": 114.28,
+     "word": "vi?",
+     "probability": 0.979
+    }
+   ]
+  },
+  {
+   "start": 115.08,
+   "end": 116.16,
+   "text": "Koliko je sati?",
+   "words": [
+    {
+     "start": 115.08,
+     "end": 115.6,
+     "word": "Koliko",
+     "probability": 0.999
+    },
+    {
+     "start": 115.6,
+     "end": 115.68,
+     "word": "je",
+     "probability": 1.0
+    },
+    {
+     "start": 115.68,
+     "end": 116.16,
+     "word": "sati?",
+     "probability": 0.981
+    }
+   ]
+  },
+  {
+   "start": 124.4,
+   "end": 146.14,
+   "text": "Čvarkov Dragan Torbica",
+   "words": [
+    {
+     "start": 124.4,
+     "end": 125.8,
+     "word": "Čvarkov",
+     "probability": 0.194
+    },
+    {
+     "start": 125.8,
+     "end": 127.2,
+     "word": "Dragan",
+     "probability": 0.024
+    },
+    {
+     "start": 127.2,
+     "end": 146.14,
+     "word": "Torbica",
+     "probability": 0.004
+    }
+   ]
+  },
+  {
+   "start": 146.16,
+   "end": 148.98,
+   "text": "Ostalo je vama samo da pečatirate, ja sam sve prošao.",
+   "words": [
+    {
+     "start": 146.16,
+     "end": 146.86,
+     "word": "Ostalo",
+     "probability": 0.779
+    },
+    {
+     "start": 146.86,
+     "end": 146.92,
+     "word": "je",
+     "probability": 0.973
+    },
+    {
+     "start": 146.92,
+     "end": 147.16,
+     "word": "vama",
+     "probability": 0.941
+    },
+    {
+     "start": 147.16,
+     "end": 147.34,
+     "word": "samo",
+     "probability": 0.933
+    },
+    {
+     "start": 147.34,
+     "end": 147.54,
+     "word": "da",
+     "probability": 0.985
+    },
+    {
+     "start": 147.54,
+     "end": 148.18,
+     "word": "pečatirate,",
+     "probability": 0.963
+    },
+    {
+     "start": 148.22,
+     "end": 148.32,
+     "word": "ja",
+     "probability": 0.783
+    },
+    {
+     "start": 148.32,
+     "end": 148.44,
+     "word": "sam",
+     "probability": 0.997
+    },
+    {
+     "start": 148.44,
+     "end": 148.64,
+     "word": "sve",
+     "probability": 0.998
+    },
+    {
+     "start": 148.64,
+     "end": 148.98,
+     "word": "prošao.",
+     "probability": 0.994
+    }
+   ]
+  },
+  {
+   "start": 149.02,
+   "end": 149.2,
+   "text": "Dobro.",
+   "words": [
+    {
+     "start": 149.02,
+     "end": 149.2,
+     "word": "Dobro.",
+     "probability": 0.833
+    }
+   ]
+  },
+  {
+   "start": 149.28,
+   "end": 150.44,
+   "text": "Ako možete, ovde.",
+   "words": [
+    {
+     "start": 149.28,
+     "end": 149.68,
+     "word": "Ako",
+     "probability": 0.891
+    },
+    {
+     "start": 149.68,
+     "end": 150.08,
+     "word": "možete,",
+     "probability": 0.998
+    },
+    {
+     "start": 150.08,
+     "end": 150.44,
+     "word": "ovde.",
+     "probability": 0.988
+    }
+   ]
+  },
+  {
+   "start": 150.84,
+   "end": 152.64,
+   "text": "Evo, čekaj, je li ovo zavedeno?",
+   "words": [
+    {
+     "start": 150.84,
+     "end": 151.28,
+     "word": "Evo,",
+     "probability": 0.875
+    },
+    {
+     "start": 151.36,
+     "end": 151.98,
+     "word": "čekaj,",
+     "probability": 0.912
+    },
+    {
+     "start": 151.98,
+     "end": 152.08,
+     "word": "je",
+     "probability": 0.925
+    },
+    {
+     "start": 152.08,
+     "end": 152.1,
+     "word": "li",
+     "probability": 0.635
+    },
+    {
+     "start": 152.1,
+     "end": 152.22,
+     "word": "ovo",
+     "probability": 0.999
+    },
+    {
+     "start": 152.22,
+     "end": 152.64,
+     "word": "zavedeno?",
+     "probability": 0.799
+    }
+   ]
+  },
+  {
+   "start": 152.72,
+   "end": 153.46,
+   "text": "Kako da ne?",
+   "words": [
+    {
+     "start": 152.72,
+     "end": 153.12,
+     "word": "Kako",
+     "probability": 0.969
+    },
+    {
+     "start": 153.12,
+     "end": 153.24,
+     "word": "da",
+     "probability": 0.992
+    },
+    {
+     "start": 153.24,
+     "end": 153.46,
+     "word": "ne?",
+     "probability": 0.999
+    }
+   ]
+  },
+  {
+   "start": 153.54,
+   "end": 155.84,
+   "text": "Jesi juče zavedeno kod mene u knjigi.",
+   "words": [
+    {
+     "start": 153.54,
+     "end": 153.98,
+     "word": "Jesi",
+     "probability": 0.393
+    },
+    {
+     "start": 153.98,
+     "end": 154.26,
+     "word": "juče",
+     "probability": 0.937
+    },
+    {
+     "start": 154.26,
+     "end": 155.04,
+     "word": "zavedeno",
+     "probability": 0.929
+    },
+    {
+     "start": 155.04,
+     "end": 155.28,
+     "word": "kod",
+     "probability": 0.946
+    },
+    {
+     "start": 155.28,
+     "end": 155.42,
+     "word": "mene",
+     "probability": 0.999
+    },
+    {
+     "start": 155.42,
+     "end": 155.56,
+     "word": "u",
+     "probability": 0.974
+    },
+    {
+     "start": 155.56,
+     "end": 155.84,
+     "word": "knjigi.",
+     "probability": 0.984
+    }
+   ]
+  },
+  {
+   "start": 156.0,
+   "end": 156.44,
+   "text": "Odlično.",
+   "words": [
+    {
+     "start": 156.0,
+     "end": 156.44,
+     "word": "Odlično.",
+     "probability": 0.991
+    }
+   ]
+  },
+  {
+   "start": 157.92,
+   "end": 158.96,
+   "text": "Eta, hvala veliko.",
+   "words": [
+    {
+     "start": 157.92,
+     "end": 158.36,
+     "word": "Eta,",
+     "probability": 0.954
+    },
+    {
+     "start": 158.4,
+     "end": 158.74,
+     "word": "hvala",
+     "probability": 0.967
+    },
+    {
+     "start": 158.74,
+     "end": 158.96,
+     "word": "veliko.",
+     "probability": 0.866
+    }
+   ]
+  },
+  {
+   "start": 158.96,
+   "end": 161.2,
+   "text": "Predmet rešen, vodim vas u zrmanju na sladaled.",
+   "words": [
+    {
+     "start": 158.96,
+     "end": 159.28,
+     "word": "Predmet",
+     "probability": 0.974
+    },
+    {
+     "start": 159.28,
+     "end": 159.62,
+     "word": "rešen,",
+     "probability": 0.982
+    },
+    {
+     "start": 159.68,
+     "end": 160.02,
+     "word": "vodim",
+     "probability": 0.989
+    },
+    {
+     "start": 160.02,
+     "end": 160.16,
+     "word": "vas",
+     "probability": 0.98
+    },
+    {
+     "start": 160.16,
+     "end": 160.3,
+     "word": "u",
+     "probability": 0.88
+    },
+    {
+     "start": 160.3,
+     "end": 160.66,
+     "word": "zrmanju",
+     "probability": 0.848
+    },
+    {
+     "start": 160.66,
+     "end": 160.76,
+     "word": "na",
+     "probability": 0.988
+    },
+    {
+     "start": 160.76,
+     "end": 161.2,
+     "word": "sladaled.",
+     "probability": 0.891
+    }
+   ]
+  },
+  {
+   "start": 161.42,
+   "end": 162.74,
+   "text": "Tođo, ako samo moćni!",
+   "words": [
+    {
+     "start": 161.42,
+     "end": 161.82,
+     "word": "Tođo,",
+     "probability": 0.707
+    },
+    {
+     "start": 161.84,
+     "end": 162.04,
+     "word": "ako",
+     "probability": 0.844
+    },
+    {
+     "start": 162.04,
+     "end": 162.3,
+     "word": "samo",
+     "probability": 0.67
+    },
+    {
+     "start": 162.3,
+     "end": 162.74,
+     "word": "moćni!",
+     "probability": 0.669
+    }
+   ]
+  },
+  {
+   "start": 166.1,
+   "end": 166.76,
+   "text": "Šta je to?",
+   "words": [
+    {
+     "start": 166.1,
+     "end": 166.54,
+     "word": "Šta",
+     "probability": 0.556
+    },
+    {
+     "start": 166.54,
+     "end": 166.62,
+     "word": "je",
+     "probability": 1.0
+    },
+    {
+     "start": 166.62,
+     "end": 166.76,
+     "word": "to?",
+     "probability": 1.0
+    }
+   ]
+  },
+  {
+   "start": 214.82,
+   "end": 218.38,
+   "text": "Dobro, znači promena pre bivalište. Ima i prezime.",
+   "words": [
+    {
+     "start": 214.82,
+     "end": 215.24,
+     "word": "Dobro,",
+     "probability": 0.814
+    },
+    {
+     "start": 215.26,
+     "end": 215.72,
+     "word": "znači",
+     "probability": 0.985
+    },
+    {
+     "start": 215.72,
+     "end": 216.08,
+     "word": "promena",
+     "probability": 0.814
+    },
+    {
+     "start": 216.08,
+     "end": 216.24,
+     "word": "pre",
+     "probability": 0.897
+    },
+    {
+     "start": 216.24,
+     "end": 216.8,
+     "word": "bivalište.",
+     "probability": 0.89
+    },
+    {
+     "start": 217.32,
+     "end": 217.94,
+     "word": "Ima",
+     "probability": 0.94
+    },
+    {
+     "start": 217.94,
+     "end": 218.02,
+     "word": "i",
+     "probability": 0.9
+    },
+    {
+     "start": 218.02,
+     "end": 218.38,
+     "word": "prezime.",
+     "probability": 0.999
+    }
+   ]
+  },
+  {
+   "start": 219.14,
+   "end": 223.08,
+   "text": "Ja sam Đurđe Čvarkovljević.",
+   "words": [
+    {
+     "start": 219.14,
+     "end": 219.76,
+     "word": "Ja",
+     "probability": 0.971
+    },
+    {
+     "start": 219.76,
+     "end": 220.0,
+     "word": "sam",
+     "probability": 0.996
+    },
+    {
+     "start": 220.0,
+     "end": 221.66,
+     "word": "Đurđe",
+     "probability": 0.931
+    },
+    {
+     "start": 221.66,
+     "end": 223.08,
+     "word": "Čvarkovljević.",
+     "probability": 0.915
+    }
+   ]
+  },
+  {
+   "start": 223.22,
+   "end": 223.44,
+   "text": "Kako?",
+   "words": [
+    {
+     "start": 223.22,
+     "end": 223.44,
+     "word": "Kako?",
+     "probability": 0.789
+    }
+   ]
+  },
+  {
+   "start": 223.56,
+   "end": 227.04,
+   "text": "Đurđe Čvarkovljević. Đurđe, Đur.",
+   "words": [
+    {
+     "start": 223.56,
+     "end": 224.18,
+     "word": "Đurđe",
+     "probability": 0.961
+    },
+    {
+     "start": 224.18,
+     "end": 225.1,
+     "word": "Čvarkovljević.",
+     "probability": 0.999
+    },
+    {
+     "start": 225.78,
+     "end": 226.4,
+     "word": "Đurđe,",
+     "probability": 0.989
+    },
+    {
+     "start": 226.4,
+     "end": 227.04,
+     "word": "Đur.",
+     "probability": 0.984
+    }
+   ]
+  },
+  {
+   "start": 229.14,
+   "end": 230.2,
+   "text": "Ima i prezime.",
+   "words": [
+    {
+     "start": 229.14,
+     "end": 229.76,
+     "word": "Ima",
+     "probability": 0.999
+    },
+    {
+     "start": 229.76,
+     "end": 229.84,
+     "word": "i",
+     "probability": 1.0
+    },
+    {
+     "start": 229.84,
+     "end": 230.2,
+     "word": "prezime.",
+     "probability": 1.0
+    }
+   ]
+  },
+  {
+   "start": 232.8,
+   "end": 233.82,
+   "text": "Ja, aha.",
+   "words": [
+    {
+     "start": 232.8,
+     "end": 233.42,
+     "word": "Ja,",
+     "probability": 0.974
+    },
+    {
+     "start": 233.54,
+     "end": 233.82,
+     "word": "aha.",
+     "probability": 0.997
+    }
+   ]
+  },
+  {
+   "start": 234.04,
+   "end": 234.44,
+   "text": "Da, vi.",
+   "words": [
+    {
+     "start": 234.04,
+     "end": 234.28,
+     "word": "Da,",
+     "probability": 0.974
+    },
+    {
+     "start": 234.36,
+     "end": 234.44,
+     "word": "vi.",
+     "probability": 0.984
+    }
+   ]
+  },
+  {
+   "start": 239.01,
+   "end": 240.25,
+   "text": "Ratko Dražićić.",
+   "words": [
+    {
+     "start": 239.01,
+     "end": 239.63,
+     "word": "Ratko",
+     "probability": 0.913
+    },
+    {
+     "start": 239.63,
+     "end": 240.25,
+     "word": "Dražićić.",
+     "probability": 0.768
+    }
+   ]
+  },
+  {
+   "start": 243.19,
+   "end": 245.57,
+   "text": "Dražićić. Ratko Dražićić, da.",
+   "words": [
+    {
+     "start": 243.19,
+     "end": 243.81,
+     "word": "Dražićić.",
+     "probability": 0.972
+    },
+    {
+     "start": 244.25,
+     "end": 244.87,
+     "word": "Ratko",
+     "probability": 0.694
+    },
+    {
+     "start": 244.87,
+     "end": 245.41,
+     "word": "Dražićić,",
+     "probability": 0.966
+    },
+    {
+     "start": 245.41,
+     "end": 245.57,
+     "word": "da.",
+     "probability": 0.999
+    }
+   ]
+  },
+  {
+   "start": 245.97,
+   "end": 246.59,
+   "text": "Sigurno?",
+   "words": [
+    {
+     "start": 245.97,
+     "end": 246.59,
+     "word": "Sigurno?",
+     "probability": 0.997
+    }
+   ]
+  },
+  {
+   "start": 247.41,
+   "end": 247.81,
+   "text": "Da",
+   "words": [
+    {
+     "start": 247.41,
+     "end": 247.81,
+     "word": "Da",
+     "probability": 0.237
+    }
+   ]
+  },
+  {
+   "start": 248.81,
+   "end": 249.45,
+   "text": "Ime i...",
+   "words": [
+    {
+     "start": 248.81,
+     "end": 249.21,
+     "word": "Ime",
+     "probability": 0.507
+    },
+    {
+     "start": 249.21,
+     "end": 249.45,
+     "word": "i...",
+     "probability": 0.741
+    }
+   ]
+  },
+  {
+   "start": 249.45,
+   "end": 252.79,
+   "text": "Dragan i ove Torbice, a inače sa rodom iz jednog malog sela pored...",
+   "words": [
+    {
+     "start": 249.45,
+     "end": 249.77,
+     "word": "Dragan",
+     "probability": 0.739
+    },
+    {
+     "start": 249.77,
+     "end": 249.85,
+     "word": "i",
+     "probability": 0.46
+    },
+    {
+     "start": 249.85,
+     "end": 249.99,
+     "word": "ove",
+     "probability": 0.804
+    },
+    {
+     "start": 249.99,
+     "end": 250.43,
+     "word": "Torbice,",
+     "probability": 0.607
+    },
+    {
+     "start": 250.55,
+     "end": 250.57,
+     "word": "a",
+     "probability": 0.616
+    },
+    {
+     "start": 250.57,
+     "end": 250.75,
+     "word": "inače",
+     "probability": 0.75
+    },
+    {
+     "start": 250.75,
+     "end": 250.85,
+     "word": "sa",
+     "probability": 0.277
+    },
+    {
+     "start": 250.85,
+     "end": 251.17,
+     "word": "rodom",
+     "probability": 0.823
+    },
+    {
+     "start": 251.17,
+     "end": 251.23,
+     "word": "iz",
+     "probability": 0.764
+    },
+    {
+     "start": 251.23,
+     "end": 251.43,
+     "word": "jednog",
+     "probability": 0.982
+    },
+    {
+     "start": 251.43,
+     "end": 251.79,
+     "word": "malog",
+     "probability": 0.984
+    },
+    {
+     "start": 251.79,
+     "end": 252.33,
+     "word": "sela",
+     "probability": 0.976
+    },
+    {
+     "start": 252.33,
+     "end": 252.79,
+     "word": "pored...",
+     "probability": 0.832
+    }
+   ]
+  },
+  {
+   "start": 252.79,
+   "end": 255.75,
+   "text": "Dobro, znači obavili smo i opštinu, sad smo ovde prijavljeni",
+   "words": [
+    {
+     "start": 252.79,
+     "end": 253.13,
+     "word": "Dobro,",
+     "probability": 0.886
+    },
+    {
+     "start": 253.17,
+     "end": 253.41,
+     "word": "znači",
+     "probability": 0.989
+    },
+    {
+     "start": 253.41,
+     "end": 253.81,
+     "word": "obavili",
+     "probability": 0.896
+    },
+    {
+     "start": 253.81,
+     "end": 253.99,
+     "word": "smo",
+     "probability": 0.998
+    },
+    {
+     "start": 253.99,
+     "end": 254.13,
+     "word": "i",
+     "probability": 0.977
+    },
+    {
+     "start": 254.13,
+     "end": 254.63,
+     "word": "opštinu,",
+     "probability": 0.994
+    },
+    {
+     "start": 254.65,
+     "end": 254.75,
+     "word": "sad",
+     "probability": 0.829
+    },
+    {
+     "start": 254.75,
+     "end": 254.93,
+     "word": "smo",
+     "probability": 0.995
+    },
+    {
+     "start": 254.93,
+     "end": 255.11,
+     "word": "ovde",
+     "probability": 0.99
+    },
+    {
+     "start": 255.11,
+     "end": 255.75,
+     "word": "prijavljeni",
+     "probability": 0.974
+    }
+   ]
+  },
+  {
+   "start": 255.75,
+   "end": 258.47,
+   "text": "Da, ja sam onaj razumeći što smo morali to da radimo",
+   "words": [
+    {
+     "start": 255.75,
+     "end": 256.23,
+     "word": "Da,",
+     "probability": 0.397
+    },
+    {
+     "start": 256.27,
+     "end": 256.37,
+     "word": "ja",
+     "probability": 0.91
+    },
+    {
+     "start": 256.37,
+     "end": 256.51,
+     "word": "sam",
+     "probability": 0.485
+    },
+    {
+     "start": 256.51,
+     "end": 256.69,
+     "word": "onaj",
+     "probability": 0.535
+    },
+    {
+     "start": 256.69,
+     "end": 257.13,
+     "word": "razumeći",
+     "probability": 0.711
+    },
+    {
+     "start": 257.13,
+     "end": 257.53,
+     "word": "što",
+     "probability": 0.845
+    },
+    {
+     "start": 257.53,
+     "end": 257.65,
+     "word": "smo",
+     "probability": 0.989
+    },
+    {
+     "start": 257.65,
+     "end": 257.99,
+     "word": "morali",
+     "probability": 0.987
+    },
+    {
+     "start": 257.99,
+     "end": 258.09,
+     "word": "to",
+     "probability": 0.55
+    },
+    {
+     "start": 258.09,
+     "end": 258.19,
+     "word": "da",
+     "probability": 0.955
+    },
+    {
+     "start": 258.19,
+     "end": 258.47,
+     "word": "radimo",
+     "probability": 0.691
+    }
+   ]
+  },
+  {
+   "start": 258.99,
+   "end": 260.17,
+   "text": "Kako, što smo morali da radimo?",
+   "words": [
+    {
+     "start": 258.99,
+     "end": 259.39,
+     "word": "Kako,",
+     "probability": 0.617
+    },
+    {
+     "start": 259.39,
+     "end": 259.53,
+     "word": "što",
+     "probability": 0.825
+    },
+    {
+     "start": 259.53,
+     "end": 259.65,
+     "word": "smo",
+     "probability": 0.924
+    },
+    {
+     "start": 259.65,
+     "end": 260.03,
+     "word": "morali",
+     "probability": 0.989
+    },
+    {
+     "start": 260.03,
+     "end": 260.11,
+     "word": "da",
+     "probability": 0.961
+    },
+    {
+     "start": 260.11,
+     "end": 260.17,
+     "word": "radimo?",
+     "probability": 0.943
+    }
+   ]
+  },
+  {
+   "start": 260.17,
+   "end": 263.79,
+   "text": "Pa što? Moraš prijavljati mjesto prebivališta, budalo, jedna blesava, kad dođeš, neđe",
+   "words": [
+    {
+     "start": 260.17,
+     "end": 260.37,
+     "word": "Pa",
+     "probability": 0.83
+    },
+    {
+     "start": 260.37,
+     "end": 260.53,
+     "word": "što?",
+     "probability": 0.972
+    },
+    {
+     "start": 260.71,
+     "end": 261.11,
+     "word": "Moraš",
+     "probability": 0.992
+    },
+    {
+     "start": 261.11,
+     "end": 261.39,
+     "word": "prijavljati",
+     "probability": 0.817
+    },
+    {
+     "start": 261.39,
+     "end": 261.51,
+     "word": "mjesto",
+     "probability": 0.94
+    },
+    {
+     "start": 261.51,
+     "end": 262.21,
+     "word": "prebivališta,",
+     "probability": 0.854
+    },
+    {
+     "start": 262.21,
+     "end": 262.55,
+     "word": "budalo,",
+     "probability": 0.711
+    },
+    {
+     "start": 262.55,
+     "end": 262.75,
+     "word": "jedna",
+     "probability": 0.927
+    },
+    {
+     "start": 262.75,
+     "end": 263.07,
+     "word": "blesava,",
+     "probability": 0.846
+    },
+    {
+     "start": 263.11,
+     "end": 263.23,
+     "word": "kad",
+     "probability": 0.854
+    },
+    {
+     "start": 263.23,
+     "end": 263.55,
+     "word": "dođeš,",
+     "probability": 0.99
+    },
+    {
+     "start": 263.55,
+     "end": 263.79,
+     "word": "neđe",
+     "probability": 0.965
+    }
+   ]
+  },
+  {
+   "start": 263.79,
+   "end": 266.43,
+   "text": "Pa šta, šta recimo, pojezda u vojsko da nam stigneš, šta bi onda...",
+   "words": [
+    {
+     "start": 263.79,
+     "end": 264.19,
+     "word": "Pa",
+     "probability": 0.789
+    },
+    {
+     "start": 264.19,
+     "end": 264.41,
+     "word": "šta,",
+     "probability": 0.899
+    },
+    {
+     "start": 264.41,
+     "end": 264.81,
+     "word": "šta",
+     "probability": 0.939
+    },
+    {
+     "start": 264.81,
+     "end": 265.03,
+     "word": "recimo,",
+     "probability": 0.52
+    },
+    {
+     "start": 265.13,
+     "end": 265.35,
+     "word": "pojezda",
+     "probability": 0.471
+    },
+    {
+     "start": 265.35,
+     "end": 265.45,
+     "word": "u",
+     "probability": 0.335
+    },
+    {
+     "start": 265.45,
+     "end": 265.67,
+     "word": "vojsko",
+     "probability": 0.933
+    },
+    {
+     "start": 265.67,
+     "end": 265.79,
+     "word": "da",
+     "probability": 0.872
+    },
+    {
+     "start": 265.79,
+     "end": 265.85,
+     "word": "nam",
+     "probability": 0.091
+    },
+    {
+     "start": 265.85,
+     "end": 266.19,
+     "word": "stigneš,",
+     "probability": 0.535
+    },
+    {
+     "start": 266.19,
+     "end": 266.27,
+     "word": "šta",
+     "probability": 0.962
+    },
+    {
+     "start": 266.27,
+     "end": 266.31,
+     "word": "bi",
+     "probability": 0.841
+    },
+    {
+     "start": 266.31,
+     "end": 266.43,
+     "word": "onda...",
+     "probability": 0.686
+    }
+   ]
+  },
+  {
+   "start": 266.43,
+   "end": 270.93,
+   "text": "A pitaj tatu tvog, što smo morali da... On da si ovako savjetovao, tvoj pametni tata, za sve mu hvala",
+   "words": [
+    {
+     "start": 266.43,
+     "end": 266.45,
+     "word": "A",
+     "probability": 0.212
+    },
+    {
+     "start": 266.45,
+     "end": 266.65,
+     "word": "pitaj",
+     "probability": 0.869
+    },
+    {
+     "start": 266.65,
+     "end": 266.97,
+     "word": "tatu",
+     "probability": 0.949
+    },
+    {
+     "start": 266.97,
+     "end": 267.25,
+     "word": "tvog,",
+     "probability": 0.739
+    },
+    {
+     "start": 267.25,
+     "end": 267.53,
+     "word": "što",
+     "probability": 0.984
+    },
+    {
+     "start": 267.53,
+     "end": 267.63,
+     "word": "smo",
+     "probability": 1.0
+    },
+    {
+     "start": 267.63,
+     "end": 267.95,
+     "word": "morali",
+     "probability": 0.997
+    },
+    {
+     "start": 267.95,
+     "end": 268.07,
+     "word": "da...",
+     "probability": 0.815
+    },
+    {
+     "start": 268.07,
+     "end": 268.17,
+     "word": "On",
+     "probability": 0.444
+    },
+    {
+     "start": 268.17,
+     "end": 268.25,
+     "word": "da",
+     "probability": 0.291
+    },
+    {
+     "start": 268.25,
+     "end": 268.29,
+     "word": "si",
+     "probability": 0.601
+    },
+    {
+     "start": 268.29,
+     "end": 268.65,
+     "word": "ovako",
+     "probability": 0.978
+    },
+    {
+     "start": 268.65,
+     "end": 269.17,
+     "word": "savjetovao,",
+     "probability": 0.805
+    },
+    {
+     "start": 269.17,
+     "end": 269.31,
+     "word": "tvoj",
+     "probability": 0.972
+    },
+    {
+     "start": 269.31,
+     "end": 269.69,
+     "word": "pametni",
+     "probability": 0.996
+    },
+    {
+     "start": 269.69,
+     "end": 270.09,
+     "word": "tata,",
+     "probability": 0.998
+    },
+    {
+     "start": 270.13,
+     "end": 270.23,
+     "word": "za",
+     "probability": 0.994
+    },
+    {
+     "start": 270.23,
+     "end": 270.43,
+     "word": "sve",
+     "probability": 0.999
+    },
+    {
+     "start": 270.43,
+     "end": 270.49,
+     "word": "mu",
+     "probability": 0.626
+    },
+    {
+     "start": 270.49,
+     "end": 270.93,
+     "word": "hvala",
+     "probability": 0.94
+    }
+   ]
+  },
+  {
+   "start": 271.55,
+   "end": 275.05,
+   "text": "Uglavnom, ja sam se ovde prijavio kao Đurđe Čvarkovljević.",
+   "words": [
+    {
+     "start": 271.55,
+     "end": 271.91,
+     "word": "Uglavnom,",
+     "probability": 0.783
+    },
+    {
+     "start": 271.91,
+     "end": 272.03,
+     "word": "ja",
+     "probability": 0.863
+    },
+    {
+     "start": 272.03,
+     "end": 272.21,
+     "word": "sam",
+     "probability": 0.988
+    },
+    {
+     "start": 272.21,
+     "end": 272.41,
+     "word": "se",
+     "probability": 0.989
+    },
+    {
+     "start": 272.41,
+     "end": 272.61,
+     "word": "ovde",
+     "probability": 0.994
+    },
+    {
+     "start": 272.61,
+     "end": 273.07,
+     "word": "prijavio",
+     "probability": 0.988
+    },
+    {
+     "start": 273.07,
+     "end": 273.31,
+     "word": "kao",
+     "probability": 0.991
+    },
+    {
+     "start": 273.31,
+     "end": 274.05,
+     "word": "Đurđe",
+     "probability": 0.942
+    },
+    {
+     "start": 274.05,
+     "end": 275.05,
+     "word": "Čvarkovljević.",
+     "probability": 0.957
+    }
+   ]
+  },
+  {
+   "start": 275.49,
+   "end": 275.85,
+   "text": "Šta?",
+   "words": [
+    {
+     "start": 275.49,
+     "end": 275.85,
+     "word": "Šta?",
+     "probability": 0.682
+    }
+   ]
+  },
+  {
+   "start": 276.05,
+   "end": 278.67,
+   "text": "Znači, zvaćete me od sad Đurđe Čvarkovljević.",
+   "words": [
+    {
+     "start": 276.05,
+     "end": 276.41,
+     "word": "Znači,",
+     "probability": 0.966
+    },
+    {
+     "start": 276.43,
+     "end": 276.81,
+     "word": "zvaćete",
+     "probability": 0.858
+    },
+    {
+     "start": 276.81,
+     "end": 276.95,
+     "word": "me",
+     "probability": 0.995
+    },
+    {
+     "start": 276.95,
+     "end": 277.07,
+     "word": "od",
+     "probability": 0.963
+    },
+    {
+     "start": 277.07,
+     "end": 277.19,
+     "word": "sad",
+     "probability": 0.639
+    },
+    {
+     "start": 277.19,
+     "end": 277.71,
+     "word": "Đurđe",
+     "probability": 0.972
+    },
+    {
+     "start": 277.71,
+     "end": 278.67,
+     "word": "Čvarkovljević.",
+     "probability": 0.941
+    }
+   ]
+  },
+  {
+   "start": 279.23,
+   "end": 282.23,
+   "text": "Dobro, Đurđe. Ja sam, šta mi je rekao...",
+   "words": [
+    {
+     "start": 279.23,
+     "end": 279.59,
+     "word": "Dobro,",
+     "probability": 0.875
+    },
+    {
+     "start": 279.59,
+     "end": 279.95,
+     "word": "Đurđe.",
+     "probability": 0.992
+    },
+    {
+     "start": 280.39,
+     "end": 280.75,
+     "word": "Ja",
+     "probability": 0.826
+    },
+    {
+     "start": 280.75,
+     "end": 281.31,
+     "word": "sam,",
+     "probability": 0.998
+    },
+    {
+     "start": 281.41,
+     "end": 281.67,
+     "word": "šta",
+     "probability": 0.976
+    },
+    {
+     "start": 281.67,
+     "end": 281.75,
+     "word": "mi",
+     "probability": 0.945
+    },
+    {
+     "start": 281.75,
+     "end": 281.87,
+     "word": "je",
+     "probability": 0.822
+    },
+    {
+     "start": 281.87,
+     "end": 282.23,
+     "word": "rekao...",
+     "probability": 0.816
+    }
+   ]
+  },
+  {
+   "start": 284.09,
+   "end": 285.39,
+   "text": "Ratković, ne, Raković.",
+   "words": [
+    {
+     "start": 284.09,
+     "end": 284.45,
+     "word": "Ratković,",
+     "probability": 0.845
+    },
+    {
+     "start": 284.55,
+     "end": 284.73,
+     "word": "ne,",
+     "probability": 0.962
+    },
+    {
+     "start": 284.79,
+     "end": 285.39,
+     "word": "Raković.",
+     "probability": 0.963
+    }
+   ]
+  },
+  {
+   "start": 286.53,
+   "end": 288.43,
+   "text": "Pa imena svoga, ne znaš po šta je.",
+   "words": [
+    {
+     "start": 286.53,
+     "end": 286.89,
+     "word": "Pa",
+     "probability": 0.342
+    },
+    {
+     "start": 286.89,
+     "end": 287.25,
+     "word": "imena",
+     "probability": 0.869
+    },
+    {
+     "start": 287.25,
+     "end": 287.67,
+     "word": "svoga,",
+     "probability": 0.967
+    },
+    {
+     "start": 287.71,
+     "end": 287.83,
+     "word": "ne",
+     "probability": 0.973
+    },
+    {
+     "start": 287.83,
+     "end": 288.09,
+     "word": "znaš",
+     "probability": 0.993
+    },
+    {
+     "start": 288.09,
+     "end": 288.17,
+     "word": "po",
+     "probability": 0.516
+    },
+    {
+     "start": 288.17,
+     "end": 288.35,
+     "word": "šta",
+     "probability": 0.827
+    },
+    {
+     "start": 288.35,
+     "end": 288.43,
+     "word": "je.",
+     "probability": 0.382
+    }
+   ]
+  },
+  {
+   "start": 288.47,
+   "end": 290.67,
+   "text": "Ja sam ušao čekao, rekao, ja sam Dragan i ovo je to.",
+   "words": [
+    {
+     "start": 288.47,
+     "end": 288.77,
+     "word": "Ja",
+     "probability": 0.609
+    },
+    {
+     "start": 288.77,
+     "end": 289.01,
+     "word": "sam",
+     "probability": 0.998
+    },
+    {
+     "start": 289.01,
+     "end": 289.23,
+     "word": "ušao",
+     "probability": 0.966
+    },
+    {
+     "start": 289.23,
+     "end": 289.57,
+     "word": "čekao,",
+     "probability": 0.511
+    },
+    {
+     "start": 289.59,
+     "end": 289.79,
+     "word": "rekao,",
+     "probability": 0.975
+    },
+    {
+     "start": 289.83,
+     "end": 289.87,
+     "word": "ja",
+     "probability": 0.911
+    },
+    {
+     "start": 289.87,
+     "end": 289.93,
+     "word": "sam",
+     "probability": 0.997
+    },
+    {
+     "start": 289.93,
+     "end": 290.27,
+     "word": "Dragan",
+     "probability": 0.957
+    },
+    {
+     "start": 290.27,
+     "end": 290.33,
+     "word": "i",
+     "probability": 0.594
+    },
+    {
+     "start": 290.33,
+     "end": 290.51,
+     "word": "ovo",
+     "probability": 0.696
+    },
+    {
+     "start": 290.51,
+     "end": 290.59,
+     "word": "je",
+     "probability": 0.886
+    },
+    {
+     "start": 290.59,
+     "end": 290.67,
+     "word": "to.",
+     "probability": 0.979
+    }
+   ]
+  },
+  {
+   "start": 291.41,
+   "end": 292.17,
+   "text": "Nema, nema, nema!",
+   "words": [
+    {
+     "start": 291.41,
+     "end": 291.77,
+     "word": "Nema,",
+     "probability": 0.258
+    },
+    {
+     "start": 291.79,
+     "end": 292.01,
+     "word": "nema,",
+     "probability": 0.993
+    },
+    {
+     "start": 292.01,
+     "end": 292.17,
+     "word": "nema!",
+     "probability": 0.993
+    }
+   ]
+  },
+  {
+   "start": 300.8,
+   "end": 301.52,
+   "text": "Đuho, Đuho!",
+   "words": [
+    {
+     "start": 300.8,
+     "end": 301.16,
+     "word": "Đuho,",
+     "probability": 0.635
+    },
+    {
+     "start": 301.16,
+     "end": 301.52,
+     "word": "Đuho!",
+     "probability": 0.984
+    }
+   ]
+  }
+ ],
+ "removed_segments": []
+}
