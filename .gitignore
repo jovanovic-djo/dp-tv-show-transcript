@@ -2,6 +2,11 @@
 downloaded_audio/
 audio/
 
+# Sample transcripts: model outputs and hand-corrected references
+data/samples/whisper_*/
+data/samples/fw_*/
+data/samples/correct_samples/
+
 # Single files
 notes.txt
 test_dataset.csv
