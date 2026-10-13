@@ -62,7 +62,7 @@ python transcriber/utils.py --model large-v3-turbo --input data/samples/audio/s1
 ```
 - Runs on an NVIDIA GPU when available (int8, about 3.5 GB VRAM for large-v3), otherwise on the CPU. The CUDA 12 libraries are installed by `requirements-transcriber.txt`.
 - Reads audio from `data/samples/audio/` and saves to `data/samples/fw_<model>/`, so `evaluation/evaluate.py` picks the results up. Files that already have a transcript are skipped.
-- Settings chosen against Whisper's loops and invented text: voice activity detection (skips music and silence), no conditioning on previous text, beam search, a Latin-script prompt and the main characters' names as hotwords.
+- Settings chosen against Whisper's loops and invented text: voice activity detection (skips music and silence), no conditioning on previous text, beam search and a Latin-script prompt. Character names as hotwords were tested and left out, they made Whisper skip whole 30-second windows of dialogue.
 - After transcription, Cyrillic is converted to Latin and segments that are most likely invented are removed: the leaked prompt, only "Muzika"/🎵, phrases like "Hvala što pratite kanal", and the same text repeated more than twice. Removed segments are kept in `removed_segments` in the JSON.
 - Each JSON has the full `text`, `segments` with start/end times and word timestamps, the model and settings used, and processing time.
 - Keeps Windows awake while running (closing a laptop lid still sleeps). On laptops, make sure the GPU is not power-limited by the manufacturer's power mode, `nvidia-smi -q -d POWER` shows the current limit.

@@ -62,5 +62,5 @@ if __name__ == "__main__":
             continue
 
         df.at[index, 'downloaded'] = True
-        df.to_csv(args.csv, index=False)
+        df.to_csv(args.csv, index=False, lineterminator="\n")
         downloaded_count += 1

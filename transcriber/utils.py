@@ -16,9 +16,9 @@ INPUT_DIR = ROOT / "data" / "samples" / "audio"
 SAMPLES_DIR = ROOT / "data" / "samples"
 AUDIO_EXTENSIONS = (".webm", ".m4a", ".opus", ".mp3", ".wav")
 
-# Steers Whisper towards Latin script and the correct spelling of the main characters
+# Steers Whisper towards Latin script. Hotwords with character names are not used,
+# they made Whisper skip whole 30-second windows of dialogue.
 INITIAL_PROMPT = "Razgovor na srpskom jeziku, latinicom."
-HOTWORDS = "Đorđe Čvarkov Dragan Torbica Boškić"
 
 # Text Whisper invents over music, silence and laughter, compared after normalize()
 INVENTED_PHRASES = ["hvala što pratite", "hvala na gledanju", "pretplatite se", "titlovi", "prevod i obrada"]
@@ -72,7 +72,6 @@ def transcription_settings(beam_size=5, vad=True, word_timestamps=True, batch_si
         "condition_on_previous_text": False,
         "word_timestamps": word_timestamps,
         "initial_prompt": INITIAL_PROMPT,
-        "hotwords": HOTWORDS,
     }
     if batch_size:
         settings["batch_size"] = batch_size
@@ -141,7 +140,7 @@ def save_transcript(transcript, output_dir):
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / f"{transcript['episode']}.json"
     temporary = path.with_name(path.name + ".tmp")
-    with open(temporary, "w", encoding="utf-8") as file:
+    with open(temporary, "w", encoding="utf-8", newline="\n") as file:
         json.dump(transcript, file, ensure_ascii=False, indent=1)
     os.replace(temporary, path)
     return path
