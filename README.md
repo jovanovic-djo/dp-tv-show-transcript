@@ -67,6 +67,16 @@ python transcriber/utils.py --model large-v3-turbo --input data/samples/audio/s1
 - Each JSON has the full `text`, `segments` with start/end times and word timestamps, the model and settings used, and processing time.
 - Keeps Windows awake while running (closing a laptop lid still sleeps). On laptops, make sure the GPU is not power-limited by the manufacturer's power mode, `nvidia-smi -q -d POWER` shows the current limit.
 
+## Correcting Reference Transcripts
+### Accuracy is measured against episodes corrected by ear. `transcriber/json_to_vtt.py` turns transcriber output into WebVTT drafts that are corrected in [Subtitle Edit](https://www.nikse.dk/subtitleedit), together with speaker labels.
+```
+python transcriber/json_to_vtt.py
+python transcriber/json_to_vtt.py s1ep1-Rakija --min-probability 0.4
+```
+- Reads `data/samples/fw_large-v3/` and saves drafts to `data/samples/drafts/`, one cue per sentence.
+- Words Whisper was unsure about are marked `(?)`, stretches of 10+ seconds without text are marked `[CHECK: ...]`.
+- How to correct a draft, write speakers and mark it as checked: [docs/correction_guide.md](docs/correction_guide.md).
+
 ## Evaluating Transcription Quality
 ### `evaluation/evaluate.py` scores model transcripts against hand-corrected references, so different models and settings can be compared with numbers.
 ```

@@ -18,7 +18,7 @@ REFERENCE_DIR = SAMPLES_DIR / "correct_samples"
 SAMPLES_CSV = SAMPLES_DIR / "samples_dataset.csv"
 RESULTS_DIR = ROOT / "evaluation" / "results"
 
-NON_MODEL_DIRS = {"audio", "correct_samples", "ground_truth"}
+NON_MODEL_DIRS = {"audio", "correct_samples", "drafts", "ground_truth"}
 TRANSCRIPT_EXTENSIONS = (".vtt", ".txt", ".json")
 LOOP_THRESHOLD = 5
 # Text Whisper is known to invent over music and silence
@@ -58,9 +58,11 @@ def read_transcript(path):
 
 
 def load_transcripts(directory):
+    """One transcript per name, .vtt preferred over .txt and .json when several exist."""
     transcripts = {}
-    for path in sorted(directory.iterdir()):
-        if path.suffix in TRANSCRIPT_EXTENSIONS and path.stem not in transcripts:
+    paths = [p for p in directory.iterdir() if p.suffix in TRANSCRIPT_EXTENSIONS]
+    for path in sorted(paths, key=lambda p: (p.stem, TRANSCRIPT_EXTENSIONS.index(p.suffix))):
+        if path.stem not in transcripts:
             transcripts[path.stem] = read_transcript(path)
     return transcripts
 
@@ -90,6 +92,8 @@ def reference_warnings(reference, model_outputs):
     warnings += [f'contains "{phrase}"' for phrase in SUSPICIOUS_PHRASES if phrase in normalized]
     if "🎵" in reference:
         warnings.append("contains 🎵")
+    if "(?)" in reference or "[CHECK" in reference:
+        warnings.append("still has draft markers (?) or [CHECK]")
     repeats = max_repeated_ngram(reference)
     if repeats >= LOOP_THRESHOLD:
         warnings.append(f"a 4-word phrase repeats {repeats}x")

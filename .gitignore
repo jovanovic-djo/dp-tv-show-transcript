@@ -6,6 +6,7 @@ audio/
 data/samples/whisper_*/
 data/samples/fw_*/
 data/samples/correct_samples/
+data/samples/drafts/
 
 # Single files
 notes.txt
