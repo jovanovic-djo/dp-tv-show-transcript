@@ -8,6 +8,9 @@ data/samples/fw_*/
 data/samples/correct_samples/
 data/samples/drafts/
 
+# Full transcripts and progress made by pipeline.py
+data/transcripts/
+
 # Single files
 notes.txt
 test_dataset.csv

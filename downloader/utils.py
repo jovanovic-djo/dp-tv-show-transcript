@@ -11,15 +11,19 @@ CSV_PATH = ROOT / "data" / "samples" / "samples_dataset.csv"
 OUTPUT_DIR = ROOT / "data" / "samples" / "audio"
 
 
-def download_episode(url, file_name, output_dir):
+def download_episode(url, file_name, output_dir, quiet=False):
     # Keep YouTube's original audio stream (usually Opus in .webm), Whisper decodes it directly
     ydl_options = {
         'format': 'bestaudio/best',
         'outtmpl': str(Path(output_dir) / f'{file_name}.%(ext)s'),
+        'quiet': quiet,
+        'noprogress': quiet,
+        'no_warnings': quiet,
     }
 
     with yt_dlp.YoutubeDL(ydl_options) as ydl:
-        ydl.download([url])
+        info = ydl.extract_info(url)
+        return Path(info['requested_downloads'][0]['filepath'])
 
 
 def get_name(season, ep_number, ep_name):
